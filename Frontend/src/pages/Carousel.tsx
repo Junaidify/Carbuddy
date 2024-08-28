@@ -52,8 +52,7 @@ const Carousel = () => {
 
       <div id="carousel_container">
         <div id="carousel">
-          <div id="images" >
-            <div className="image"  ref={carouselRef}>
+          <div id="images" ref={carouselRef} >
               {images.map((image) => (
                 <div
                   className="image_tag"
@@ -61,7 +60,7 @@ const Carousel = () => {
                   style={{ backgroundImage: `url(${image})` }}
                 ></div>
               ))}
-            </div>
+          
           </div>
           <div className="car_details">
             <p>premium car rentals</p>

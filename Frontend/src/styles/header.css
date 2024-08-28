@@ -25,16 +25,9 @@ header {
 
 #images {
   display: flex;
-  width: 100%;
-  height: 90dvh;
-  overflow: hidden;
-  background: linear-gradient(to bottom, white 80%, rgb(63, 52, 52));
-}
-
-.image {
   width: 600vw;
-  height: 100%;
-  position: relative;
+  height: 90dvh;
+  background: linear-gradient(to bottom, white 80%, rgb(63, 52, 52));
 }
 
 .image_tag {
