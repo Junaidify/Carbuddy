@@ -7,6 +7,7 @@ import car_3 from "../images/cars_3.png";
 import car_4 from "../images/cars_4.png";
 import car_5 from "../images/cars_5.png";
 import car_6 from "../images/cars_6.png";
+import logo from "../images/logo.webp";
 
 // import styling
 import "../styles/header.css";
@@ -16,7 +17,8 @@ import {
   faAngleRight,
   faAngleLeft,
   faPlantWilt,
-  faGear,
+  faHeart,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -43,24 +45,36 @@ const Carousel = () => {
   return (
     <header>
       <nav>
-        <a href="#">Home</a>
-        <a href="#">A</a>
-        <a href="#">d</a>
-        <a href="#">d</a>
-        <a href="#">d</a>
+        <p>
+          <img src={logo} alt="" />
+        </p>
+        <div>
+          <a href="#">SUV</a>
+          <a href="#">Hetchback</a>
+          <a href="#">Convertable</a>
+          <a href="#">Sedan</a>
+        </div>
+
+        <div>
+          <p>
+            <FontAwesomeIcon icon={faUser} />
+          </p>
+          <p>
+            <FontAwesomeIcon icon={faHeart} />
+          </p>
+        </div>
       </nav>
 
       <div id="carousel_container">
         <div id="carousel">
-          <div id="images" ref={carouselRef} >
-              {images.map((image) => (
-                <div
-                  className="image_tag"
-                  key={image}
-                  style={{ backgroundImage: `url(${image})` }}
-                ></div>
-              ))}
-          
+          <div id="images" ref={carouselRef}>
+            {images.map((image) => (
+              <div
+                className="image_tag"
+                key={image}
+                style={{ backgroundImage: `url(${image})` }}
+              ></div>
+            ))}
           </div>
           <div className="car_details">
             <p>premium car rentals</p>
@@ -74,7 +88,9 @@ const Carousel = () => {
             <div className="car_details_features">
               <div>
                 <p>
-                  <FontAwesomeIcon icon={faGear} />
+                  <span className="material-symbols-outlined">
+                    search_hands_free
+                  </span>
                 </p>
                 <p>Free-Test-Drive</p>
                 <p>

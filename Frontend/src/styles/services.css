@@ -1,0 +1,71 @@
+:root {
+  --primary-color: #e61515;
+  --secondary-color: #660e66;
+  --tertairy-color: #6b0fc2;
+  --background-color: #22384e;
+  --text-color: #1d3f3c;
+  --white-color: #f8f9fa;
+}
+
+#service_wrapper {
+  width: 80%;
+  margin: 10dvh auto 0;
+}
+
+#services_container h1 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0 0 3dvh 0;
+  color: var(--text-color);
+}
+
+#services_section {
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+
+#services_section > div:nth-child(1) img {
+  width: 100%;
+  height: 100%;
+}
+
+#services_section > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  row-gap: 3dvh;
+}
+
+#services_section > div:nth-child(2) > div {
+  display: flex;
+  align-items: center;
+  column-gap: 1dvw;
+}
+
+#services_section > div:nth-child(2) > div > p:nth-child(1) {
+  box-shadow: 0 0 10px 0 var(--tertairy-color);
+  padding: 1dvh;
+  border-radius: 10px;
+}
+
+#services_section > div:nth-child(2) > div > p:nth-child(1) span {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+#services_section > div:nth-child(2) > div > div:nth-child(2) {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+#services_section > div:nth-child(2) > div > div:nth-child(2) p:nth-child(1) {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+}
+
+#services_section > div:nth-child(2) > div > div:nth-child(2) p:nth-child(2) {
+  font-size: 0.9rem;
+}

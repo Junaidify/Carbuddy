@@ -1,7 +1,10 @@
 :root {
-  --text-color: #333333;
-  --background-color: #f8f9fa;
-  --button-color: #1d3f3c;
+  --primary-color: #e61515;
+  --secondary-color: #660e66;
+  --tertairy-color: #6b0fc2;
+  --background-color: #22384e;
+  --text-color: #1d3f3c;
+  --white-color: #f8f9fa;
 }
 
 header {
@@ -10,6 +13,73 @@ header {
   align-items: center;
   width: 100%;
   height: fit-content;
+  font-family: "Times New Roman", Times, serif;
+  position: relative;
+}
+
+nav {
+  display: grid;
+  grid-template-columns: 20% 40% 10%;
+  justify-content: space-around;
+  align-content: center;
+  width: 100%;
+  height: 7dvh;
+  position: sticky;
+  top: 0;
+}
+
+nav > div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+nav > div > a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+
+nav > div > a:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -2px;
+  background-color: var(--primary-color);
+  transition: width 0.5s ease-in-out;
+}
+
+nav > div > a:hover {
+  transform: scale3d(1.1, 1.1, 1.1);
+  transition: transform 0.5s ease-in-out;
+}
+
+nav > div > a:hover::after {
+  width: 100%;
+}
+
+nav > p {
+  width: 50%;
+  height: 60%;
+  margin: auto;
+}
+
+nav > p > img {
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: darken;
+}
+
+nav > div > p:nth-child(1) {
+  color: var(--text-color);
+}
+
+nav > div > p:nth-child(2) {
+  color: var(--primary-color);
 }
 
 #carousel_container {
@@ -27,7 +97,7 @@ header {
   display: flex;
   width: 600vw;
   height: 90dvh;
-  background: linear-gradient(to bottom, white 80%, rgb(63, 52, 52));
+  background: linear-gradient(to bottom, white 80%, rgb(187, 98, 98));
 }
 
 .image_tag {
@@ -35,7 +105,7 @@ header {
   height: 100%;
   background-repeat: no-repeat;
   background-size: 70%;
-  background-position: right bottom;
+  background-position: right center;
 }
 
 #button button {
@@ -43,7 +113,7 @@ header {
   top: 50%;
   font-size: 2.5rem;
   font-weight: bold;
-  color: red;
+  color: var(--primary-color);
   padding: 0.2rem;
   border-radius: 10px;
   border: none;
@@ -67,7 +137,7 @@ header {
 
 .car_details > p:nth-child(1) {
   font-size: 0.9rem;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px 0 var(--tertairy-color);
   width: fit-content;
   padding: 0.2rem 1rem;
   border-radius: 10%;
@@ -92,7 +162,7 @@ header {
 }
 
 .car_details button {
-  background-color: var(--button-color);
+  background-color: var(--text-color);
   color: white;
   font-weight: bold;
   padding: 1rem 2rem;
@@ -122,7 +192,7 @@ header {
 .car_details_features div:nth-of-type(2) p:nth-of-type(1) {
   font-size: 1.5rem;
   width: fit-content;
-  padding: 0.5rem;
+  padding: 1dvh;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
