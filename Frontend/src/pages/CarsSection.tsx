@@ -64,7 +64,7 @@ const CarsSection = () => {
             {images.map((image) => (
               <div key={image}>
                 <div className="toprated_img_section">
-                  <img src={image} alt="" />
+                  <img style={{ width: "100%", height: "100%" }} src={image} alt="" />
                 </div>
                 <div className="toprated_section_features">
                   <p>Premium Car</p>

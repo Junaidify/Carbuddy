@@ -6,6 +6,27 @@ import "../styles/services.css";
 // import images
 import service_img from "../images/service_section_img.jpg";
 
+const customerReview = [
+  {
+    id: 1,
+    name: "John Doe",
+    review:
+      "RentWheels made my rental experience seamless! User-friendly interface, accurate listings, and excellent customer service. The booking was easy, and the property matched the description perfectly. Highly recommend RentWheels!",
+  },
+  {
+    id: 2,
+    name: "John Doe",
+    review:
+      "RentWheels made my rental experience seamless! User-friendly interface, accurate listings, and excellent customer service. The booking was easy, and the property matched the description perfectly. Highly recommend RentWheels!",
+  },
+  {
+    id: 3,
+    name: "John Doe",
+    review:
+      "RentWheels made my rental experience seamless! User-friendly interface, accurate listings, and excellent customer service. The booking was easy, and the property matched the description perfectly. Highly recommend RentWheels!",
+  },
+];
+
 const Services = () => {
   return (
     <div id="service_wrapper">
@@ -55,6 +76,38 @@ const Services = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div id="customer_review">
+        <div>
+          <h1>What People Say</h1>
+          <h1>About Us</h1>
+          <p>
+            We are committed to providing our customers with exceptional
+            service.
+          </p>
+          <p>
+            We are dedicated to delivering an unparalleled customer experience,
+            ensuring that every interaction exceeds expectations
+          </p>
+        </div>
+
+        <div>
+          {customerReview.map((review) => (
+            <div id="review" key={review.id}>
+              <div>
+                <p>
+                  <span className="material-symbols-outlined">person</span>
+                </p>
+                <div>
+                  <p>{review.name}</p>
+                  <p>Customer</p>
+                </div>
+              </div>
+              <p>{review.review}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

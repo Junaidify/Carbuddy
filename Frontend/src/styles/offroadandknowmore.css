@@ -1,0 +1,47 @@
+:root {
+  --primary-color: #e61515;
+  --secondary-color: #660e66;
+  --tertairy-color: #6b0fc2;
+  --background-color: #22384e;
+  --text-color: #1d3f3c;
+  --white-color: #f8f9fa;
+  --heading-size: 3rem;
+}
+
+#static_section {
+  width: 80%;
+  margin: 7dvh auto 0;
+}
+
+#off_road > #off_road_first {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+#off_road > #off_road_first > div:nth-child(1) > h1 {
+  color: var(--text-color);
+  font-size: var(--heading-size);
+}
+
+#off_road_second {
+  position: relative;
+}
+
+#off_road_second > p:nth-child(1) {
+  font-size: 6dvw;
+  text-align: center;
+  margin: 5dvh auto 0;
+  background-image: url(../images/toprated_5.jpg);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: bold;
+}
+
+.off_road_image {
+  width: 100%;
+  height: 100%;
+}

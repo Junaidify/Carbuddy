@@ -1,6 +1,7 @@
 import "./App.css";
 import Carousel from "./pages/Carousel";
 import CarsSection from "./pages/CarsSection";
+import OffRoadAndKnowMore from "./pages/OffRoadAndKnowMore";
 import Services from "./pages/Services";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Carousel />
       <CarsSection />
       <Services />
+      <OffRoadAndKnowMore />
     </>
   );
 }

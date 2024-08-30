@@ -5,6 +5,7 @@
   --background-color: #22384e;
   --text-color: #1d3f3c;
   --white-color: #f8f9fa;
+  --heading-size: 3rem;
 }
 
 #service_wrapper {
@@ -67,5 +68,61 @@
 }
 
 #services_section > div:nth-child(2) > div > div:nth-child(2) p:nth-child(2) {
+  font-size: 0.9rem;
+}
+
+/*----------------- Customer Review ----------------- */
+
+#customer_review {
+  margin: dvh auto 0;
+}
+
+#customer_review > div:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#customer_review > div:nth-child(1) > h1 {
+  color: var(--text-color);
+  font-weight: bold;
+  font-size: var(--heading-size);
+}
+
+#customer_review > div:nth-child(2) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  row-gap: 5dvh;
+  column-gap: 5dvh;
+  margin: 5dvh auto 0;
+  width: 80%;
+}
+
+#review {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2dvh;
+  border-radius: 10px;
+  padding: 2dvh;
+  box-shadow: 0 0 10px 0 var(--tertairy-color);
+}
+
+#review > div {
+  display: flex;
+  align-items: center;
+  row-gap: 2dvh;
+  column-gap: 2dvh;
+  border-bottom: 2px solid var(--secondary-color);
+  padding-bottom: 1dvh;
+}
+
+#review > div > div > p:nth-child(1) {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+#review > div > div > p:nth-child(2) {
   font-size: 0.9rem;
 }
