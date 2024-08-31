@@ -38,6 +38,12 @@
   row-gap: 3dvh;
 }
 
+#services_section > div:nth-child(2) > div:hover{
+  cursor: pointer;
+  transform: scale3d(1.1, 1.1, 1.1);
+  transition: transform 0.2s ease-in-out;
+}
+
 #services_section > div:nth-child(2) > div {
   display: flex;
   align-items: center;
@@ -108,6 +114,12 @@
   box-shadow: 0 0 10px 0 var(--tertairy-color);
 }
 
+#review:hover{
+  cursor: pointer;
+  transform: scale3d(1.1, 1.1, 1.1);
+  transition: transform 0.2s ease-in-out;
+}
+
 #review > div {
   display: flex;
   align-items: center;
@@ -117,11 +129,13 @@
   padding-bottom: 1dvh;
 }
 
+
 #review > div > div > p:nth-child(1) {
   font-size: 1.5rem;
   color: var(--secondary-color);
   font-weight: bold;
 }
+
 
 #review > div > div > p:nth-child(2) {
   font-size: 0.9rem;

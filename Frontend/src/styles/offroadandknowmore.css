@@ -10,7 +10,7 @@
 
 #static_section {
   width: 80%;
-  margin: 7dvh auto 0;
+  margin: 7dvh auto;
 }
 
 #off_road > #off_road_first {
@@ -41,7 +41,73 @@
   font-weight: bold;
 }
 
+#off_road_second > p:nth-child(1):hover{
+  cursor: pointer;
+  transform: scale3d(1.3, 1.3, 1.3);
+  transition: transform 0.2s ease-in-out;
+}
+
 .off_road_image {
   width: 100%;
   height: 100%;
+}
+
+/* -------------------- Know More --------------------- */
+
+#know_more {
+  display: flex;
+  flex-direction: column;
+  margin-top: 7dvh;
+}
+
+#know_more_header {
+  text-align: center;
+}
+
+#know_more_header > h1 {
+  color: var(--text-color);
+  font-size: var(--heading-size);
+}
+
+#know_more_content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 1dvw;
+  margin-top: 5dvh;
+}
+
+#know_more_card:hover{
+  cursor: pointer;
+  transform: scaleY(1.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+#know_more_card > div:nth-child(1) {
+  width: 100%;
+  height: 40dvh;
+}
+
+#know_more_card > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1dvh;
+  padding-left: 0.5dvw;
+  padding-top: 1dvh;
+}
+
+#know_more_card > div:nth-child(2) > p:nth-child(1) {
+  font-size: 1rem;
+  color: var(--tertairy-color);
+}
+
+#know_more_card > div:nth-child(2) > p:nth-child(2) {
+  font-size: 1rem;
+}
+
+#know_more_card > div:nth-child(2) > p:nth-child(3) {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  text-align: right;
+  padding-right: 1dvw;
 }

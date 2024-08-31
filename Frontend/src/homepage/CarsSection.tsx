@@ -53,7 +53,7 @@ const CarsSection = () => {
       <div id="toprated_container">
         <h1>Top Rated Cars</h1>
         <div id="toprated">
-          <div>
+          <div id="toprated_nav">
             <a href="#">SUV</a>
             <a href="#">Hetchback</a>
             <a href="#">Convertable</a>

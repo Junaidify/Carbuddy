@@ -46,7 +46,7 @@ const Carousel = () => {
     <header>
       <nav>
         <p>
-          <img src={logo} alt="" />
+          <img  src={logo} alt="" />
         </p>
         <div>
           <a href="#">SUV</a>

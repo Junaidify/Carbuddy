@@ -1,8 +1,10 @@
 import "./App.css";
-import Carousel from "./pages/Carousel";
-import CarsSection from "./pages/CarsSection";
-import OffRoadAndKnowMore from "./pages/OffRoadAndKnowMore";
-import Services from "./pages/Services";
+import Carousel from "./homepage/Carousel";
+import CarsSection from "./homepage/CarsSection";
+import Footer from "./homepage/Footer";
+import OffRoadAndKnowMore from "./homepage/OffRoadAndKnowMore";
+import Services from "./homepage/Services";
+
 
 function App() {
   return (
@@ -11,6 +13,7 @@ function App() {
       <CarsSection />
       <Services />
       <OffRoadAndKnowMore />
+      <Footer/>
     </>
   );
 }
