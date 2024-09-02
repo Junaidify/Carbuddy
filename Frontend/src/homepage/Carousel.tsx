@@ -21,11 +21,13 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 const Carousel = () => {
   const images = [car_1, car_2, car_3, car_4, car_5, car_6];
   const carouselRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState<number>(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (carouselRef.current) {
@@ -46,13 +48,13 @@ const Carousel = () => {
     <header>
       <nav>
         <p>
-          <img  src={logo} alt="" />
+          <img src={logo} alt="" />
         </p>
         <div>
-          <a href="#">SUV</a>
-          <a href="#">Hetchback</a>
-          <a href="#">Convertable</a>
-          <a href="#">Sedan</a>
+          <button onClick={() => navigate("/suv")}>SUV</button>
+          <button onClick={() => navigate("/hetchback")}>Hetchback</button>
+          <button onClick={() => navigate("/convertible")}>Convertable</button>
+          <button onClick={() => navigate("/sedan")}>Sedan</button>
         </div>
 
         <div>
