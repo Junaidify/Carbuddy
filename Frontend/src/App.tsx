@@ -1,19 +1,17 @@
+import { lazy } from "react";
 import "./App.css";
-import Carousel from "./homepage/Carousel";
-import CarsSection from "./homepage/CarsSection";
-import Footer from "./homepage/Footer";
-import OffRoadAndKnowMore from "./homepage/OffRoadAndKnowMore";
-import Services from "./homepage/Services";
+import SuvCar from "./pages/SuvCar";
+import { Route, Routes } from "react-router-dom";
 
+const Homepage = lazy(() => import("./homepage/Homepage"));
 
 function App() {
   return (
     <>
-      <Carousel />
-      <CarsSection />
-      <Services />
-      <OffRoadAndKnowMore />
-      <Footer/>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/suvcar" element={<SuvCar />} />
+      </Routes>
     </>
   );
 }
