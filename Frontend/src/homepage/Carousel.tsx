@@ -7,7 +7,6 @@ import car_3 from "../images/cars_3.png";
 import car_4 from "../images/cars_4.png";
 import car_5 from "../images/cars_5.png";
 import car_6 from "../images/cars_6.png";
-import logo from "../images/logo.webp";
 
 // import styling
 import "../styles/header.css";
@@ -17,17 +16,13 @@ import {
   faAngleRight,
   faAngleLeft,
   faPlantWilt,
-  faHeart,
-  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useNavigate } from "react-router-dom";
 
 const Carousel = () => {
   const images = [car_1, car_2, car_3, car_4, car_5, car_6];
   const carouselRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState<number>(0);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (carouselRef.current) {
@@ -46,27 +41,6 @@ const Carousel = () => {
 
   return (
     <header>
-      <nav>
-        <p>
-          <img src={logo} alt="" />
-        </p>
-        <div>
-          <button onClick={() => navigate("/suv")}>SUV</button>
-          <button onClick={() => navigate("/hetchback")}>Hetchback</button>
-          <button onClick={() => navigate("/convertible")}>Convertable</button>
-          <button onClick={() => navigate("/sedan")}>Sedan</button>
-        </div>
-
-        <div>
-          <p>
-            <FontAwesomeIcon icon={faUser} />
-          </p>
-          <p>
-            <FontAwesomeIcon icon={faHeart} />
-          </p>
-        </div>
-      </nav>
-
       <div id="carousel_container">
         <div id="carousel">
           <div id="images" ref={carouselRef}>
