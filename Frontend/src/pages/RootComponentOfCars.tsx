@@ -5,8 +5,6 @@ import { CarPropTypes, InitialStatePropTypes } from "../constant/interfaces";
 
 // import styling
 import "../styles/carcategorypage.css";
-import img from "../images/service_section_img.jpg";
-import wallpaper from "../images/sedan_wallpaper.jpg";
 import Footer from "../homepage/Footer";
 
 const RootComponentOfCars = ({ category }: { category: string }) => {
@@ -173,7 +171,7 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
               <div className="categorised_car_img_section">
                 <img
                   style={{ width: "100%", height: "100%" }}
-                  src={img}
+                  src={car.image}
                   alt=""
                 />
               </div>
