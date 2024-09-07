@@ -1,14 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useFetch } from "../hooks/useFetch";
+import { useNavigate } from "react-router-dom";
 
 // Import styling
 import "../styles/carsection.css";
 import { CarPropTypes, InitialStatePropTypes } from "../constant/interfaces";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CarsSection = () => {
-  // Custom hook to fetch cars data
-  useFetch("http://localhost:3000/cars", "SUV");
+  const [category, setCategory] = useState<string>("SUV");
+  useFetch("http://localhost:3000/cars", category);
 
   // Get the data from the Redux store
   const { isLoading, isError, cars } = useSelector(
@@ -19,6 +25,7 @@ const CarsSection = () => {
   const carRef = useRef<HTMLDivElement | null>(null);
   const [index, setIndex] = useState<number>(0);
   const [active, setActive] = useState<number>(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (carRef.current) {
@@ -43,6 +50,7 @@ const CarsSection = () => {
         if (idx === active) {
           // Active element
           childDiv.style.transform = `scale(1) perspective(16px) rotateY(0deg)`;
+          childDiv.style.zIndex = "10";
         }
 
         childDiv.style.transition = "transform 0.5s ease-in-out";
@@ -66,6 +74,8 @@ const CarsSection = () => {
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error occurred while fetching cars.</p>;
   if (!cars || cars.length === 0) return <p>No cars available</p>;
+
+  console.log(category.toLowerCase());
 
   return (
     <div id="cars_section">
@@ -111,64 +121,45 @@ const CarsSection = () => {
       <div id="toprated_container">
         <h1>Top Rated Cars</h1>
         <div id="toprated">
-          {/* Navigation Links */}
-          <div id="toprated_nav">
-            <a href="#">SUV</a>
-            <a href="#">Hatchback</a>
-            <a href="#">Convertible</a>
-            <a href="#">Sedan</a>
+          <div>
+            <button onClick={() => setCategory("SUV")}>SUV</button>
+            <button onClick={() => setCategory("Sedan")}>Sedan</button>
+            <button onClick={() => setCategory("Convertible")}>
+              Convertible
+            </button>
+            <button onClick={() => setCategory("Offroad")}>Off Road</button>
           </div>
 
           {/* Cars Carousel */}
-          <div id="toprated_cars" ref={carRef}>
-            {cars.map((car: CarPropTypes, idx: number) => (
-              <div
-                style={{ transform: `scale(${index === idx + 1 ? 1 : 0.6}) ` }}
-                className="cars_card"
-                key={car._id}
-              >
-                <div className="toprated_img_section">
-                  <img
-                    style={{ width: "100%", height: "100%" }}
-                    src={car.image}
-                    alt="toprated car image"
-                  />
-                </div>
-                {/* Uncomment and complete this section if you need car details */}
-                {/* 
-                <div className="toprated_section_features">
-                  <p>{car.name}</p>
-                  <div className="toprated_car_features">
-                    <p>{car.seater} Seater</p>
-                    <p>
-                      <span className="material-symbols-outlined">
-                        search_hands_free
-                      </span>
-                      {car.transmission}
-                    </p>
-                    <p>{car.mileage} kmph</p>
+          <div id="toprated_cards_container">
+            <div id="toprated_cars" ref={carRef}>
+              {cars.map((car: CarPropTypes) => (
+                <div
+                  onClick={() => navigate(`/${category.toLowerCase()}`)}
+                  className="cars_card"
+                  key={car._id}
+                >
+                  <div className="toprated_img_section">
+                    <img
+                      style={{ width: "100%", height: "100%" }}
+                      src={car.image}
+                      alt="toprated car image"
+                    />
                   </div>
-                  <p className="toprated_car_price">
-                    Starting at ${car.bookingAmount}
-                  </p>
-                  <div>
-                    <p>Details</p>
-                    <p>Book Now</p>
-                  </div>
-                </div> 
-                */}
-              </div>
-            ))}
-          </div>
 
-          {/* Navigation Buttons */}
-          <div className="navigation-buttons">
-            <button onClick={handlePrev} id="prev">
-              Prev
-            </button>
-            <button onClick={handleNext} id="next">
-              Next
-            </button>
+                  <div className="toprated_section_features">{car.name}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="toprated_nav_btn">
+              <button onClick={handlePrev}>
+                <FontAwesomeIcon icon={faChevronLeft} />
+              </button>
+              <button onClick={handleNext}>
+                <FontAwesomeIcon icon={faChevronRight} />
+              </button>
+            </div>
           </div>
         </div>
       </div>

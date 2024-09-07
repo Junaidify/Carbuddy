@@ -89,7 +89,8 @@ nav > div > .navlink:after {
 }
 
 nav > div > .navlink:hover {
-  transform: scale3d(1.1, 1.1, 1.1) rotate(2turn);
+  transform: scale3d(1.1, 1.1, 1.1);
+  filter: drop-shadow(0 0 10px var(--primary-color));
   transition: transform 0.5s ease-in-out;
 }
 
@@ -120,18 +121,16 @@ nav > .logo_parent > img {
   align-items: center;
   width: 100%;
   height: 100%;
-  animation: scale 2s infinite ease-in-out alternate;
+  animation: scale 0.3s infinite ease-in-out alternate;
   mix-blend-mode: darken;
 }
 
 @keyframes scale {
   from {
     transform: scale(1);
-    filter: blur(1px);
   }
   to {
     transform: scale(1.1);
-    filter: blur(0px);
   }
 }
 
@@ -142,6 +141,8 @@ nav > div > p:nth-child(1) {
 nav > div > p:nth-child(2) {
   color: var(--primary-color);
 }
+
+/* -------------- Carousel -------------- */
 
 #carousel_container {
   width: 100%;

@@ -27,9 +27,10 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  width: 100%;
+  width: 90%;
   height: 100%;
-  column-gap: 5vw;
+  column-gap: 3vw;
+  margin: auto;
 }
 
 #howitworks div {
@@ -82,9 +83,42 @@
   text-align: center;
 }
 
-#toprated > div:nth-child(1) > a:hover {
-  transform: scale3d(1.5, 1.5, 1.5);
-  transition: transform 0.5s ease-in-out;
+#toprated > div:nth-child(1) button {
+  color: var(--primary-color);
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 0.5dvh;
+}
+
+#toprated > div:nth-child(1) button:hover {
+  transform: scale3d(1.2, 1.2, 1.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+#toprated > div:nth-child(1) > button::after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: red;
+}
+
+@keyframes move {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+#toprated > div:nth-child(1) > button:hover::after {
+  animation: move 0.5s linear forwards;
 }
 
 #toprated > div:nth-child(1) {
@@ -99,11 +133,6 @@
   margin-left: 2dvw;
 }
 
-#toprated > div:nth-child(1) a {
-  color: var(--primary-color);
-  text-decoration: none;
-}
-
 #toprated_cars {
   display: flex;
   flex-direction: row;
@@ -113,19 +142,67 @@
   margin-left: 30%;
   height: 370px;
   transform: perspective(20px) rotateY(10deg);
+  position: relative;
 }
 
 .cars_card {
   width: 100%;
   height: 320px;
   box-shadow: 0 0 10px 0 var(--tertairy-color);
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 1dvh 0 3dvh;
   row-gap: 1dvh;
   margin: auto;
 }
 
+.toprated_section_features {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--tertairy-color);
+  width: 100%;
+}
+
+.toprated_section_features > p:nth-child(1) {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.toprated_section_features {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-color);
+  padding: 1dvh 0;
+  border-radius: 10px;
+}
+
 .toprated_img_section {
   width: 400px;
   height: 300px;
+}
+
+#toprated_cards_container{
+  position:relative;
+}
+
+.toprated_nav_btn button{
+   position: absolute;
+   top: 50%;
+   border: none;
+   font-size: 2rem;
+   background-color: transparent;
+   color: var(--text-color);
+}
+
+.toprated_nav_btn button:nth-child(1){
+  left: 0;
+}
+
+.toprated_nav_btn button:nth-child(2){
+  right: 0;
 }

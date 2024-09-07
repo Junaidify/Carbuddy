@@ -6,10 +6,12 @@ import { CarPropTypes, InitialStatePropTypes } from "../constant/interfaces";
 // import styling
 import "../styles/carcategorypage.css";
 import Footer from "../homepage/Footer";
+import { useNavigate } from "react-router-dom";
 
 const RootComponentOfCars = ({ category }: { category: string }) => {
   // called the fetch custom hook and pass the category
   useFetch("http://localhost:3000/cars", category);
+  const navigate = useNavigate();
 
   // get the data from the redux store
   const { isLoading, isError, cars } = useSelector(
@@ -167,7 +169,10 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
         </div>
         <div id="categorised_car_container">
           {filteredData.map((car) => (
-            <div key={car._id}>
+            <div
+              key={car._id}
+              onClick={() => navigate(`/${category}/:${car._id}`)}
+            >
               <div className="categorised_car_img_section">
                 <img
                   style={{ width: "100%", height: "100%" }}
@@ -199,8 +204,7 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
           ))}
         </div>
       </div>
-
-      <Footer/>
+      <Footer />
     </>
   );
 };

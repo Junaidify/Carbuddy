@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import "./App.css";
 import SuvCar from "./pages/SuvCar";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { NavLink, Route, Routes, useParams } from "react-router-dom";
 import Convertible from "./pages/Convertible";
 import Sedan from "./pages/Sedan";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,8 +11,11 @@ import logo from "./images/logo.jpeg";
 const Homepage = lazy(() => import("./homepage/Homepage"));
 import "./styles/header.css";
 import Offroad from "./pages/Offroad";
+import ProductDetails from "./productpage/ProductDetails";
 
 function App() {
+  const id = useParams();
+
   return (
     <>
       <nav>
@@ -23,14 +26,14 @@ function App() {
           <NavLink className="navlink" to="/suv">
             SUV{" "}
           </NavLink>
-          <NavLink className="navlink" to="/offroad">
-            Off-Road
+          <NavLink className="navlink" to="/sedan">
+            Sedan
           </NavLink>
           <NavLink className="navlink" to="/convertible">
             Convertable
           </NavLink>
-          <NavLink className="navlink" to="/sedan">
-            Sedan
+          <NavLink className="navlink" to="/offroad">
+            Off-Road
           </NavLink>
         </div>
 
@@ -49,6 +52,7 @@ function App() {
         <Route path="/convertible" element={<Convertible />} />
         <Route path="/offroad" element={<Offroad />} />
         <Route path="/sedan" element={<Sedan />} />
+        <Route path={`/suv/:${id.id}`} element={<ProductDetails />} />
       </Routes>
     </>
   );
