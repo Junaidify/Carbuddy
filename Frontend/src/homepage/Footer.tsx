@@ -1,13 +1,14 @@
-import {} from "react";
-
 // importing logo image
-import logo from "../images/logo.webp";
+import logo from "../images/logo.jpeg";
 
 // importing styling
 import "../styles/footer.css";
+
+// fontawesome import
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+
 const Footer = () => {
   return (
     <>

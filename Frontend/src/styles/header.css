@@ -14,7 +14,6 @@ header {
   width: 99%;
   height: 85dvh;
   font-family: "Times New Roman", Times, serif;
-  position: relative;
   margin: auto;
 }
 
@@ -25,8 +24,39 @@ nav {
   align-content: center;
   width: 100%;
   height: 7dvh;
-  position: sticky;
+  position: relative;
+  background: white;
   top: 0;
+}
+
+nav::before,
+nav::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(
+    from var(--rotate),
+    transparent 80%,
+    rgb(104, 9, 91)
+  );
+  padding: 2px 4px;
+  z-index: -1;
+  animation: header-animation 2s infinite forwards;
+}
+
+nav::before {
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+@keyframes header-animation {
+  from {
+    --rotate: 120deg;
+  }
+  to {
+    --rotate: 300deg;
+  }
 }
 
 nav > div {
@@ -59,7 +89,7 @@ nav > div > .navlink:after {
 }
 
 nav > div > .navlink:hover {
-  transform: scale3d(1.1, 1.1, 1.1);
+  transform: scale3d(1.1, 1.1, 1.1) rotate(2turn);
   transition: transform 0.5s ease-in-out;
 }
 
@@ -69,22 +99,13 @@ nav > div > .navlink:hover::after {
 
 nav > .logo_parent {
   width: 50%;
-  height: 60%;
+  height: 50%;
   margin: auto;
 }
 
 nav > .logo_parent > img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-}
-
-nav > div > p:nth-child(1) {
-  color: var(--text-color);
-}
-
-nav > div > p:nth-child(2) {
-  color: var(--primary-color);
 }
 
 @property --rotate {
@@ -94,42 +115,32 @@ nav > div > p:nth-child(2) {
 }
 
 .logo_parent {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
+  animation: scale 2s infinite ease-in-out alternate;
+  mix-blend-mode: darken;
 }
 
-.logo_parent::before,
-.logo_parent::after {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: conic-gradient(
-    from var(--rotate),
-    transparent 60%,
-    rgb(104, 9, 91)
-  );
-  padding: 2px 4px;
-  z-index: -1;
-  animation: header-animation 3s infinite forwards;
-}
-
-.logo_parent::before {
-  filter: blur(1.5rem);
-  opacity: 0.5;
-}
-
-@keyframes header-animation {
+@keyframes scale {
   from {
-    --rotate: 0deg;
+    transform: scale(1);
+    filter: blur(1px);
   }
   to {
-    --rotate: 360deg;
+    transform: scale(1.1);
+    filter: blur(0px);
   }
+}
+
+nav > div > p:nth-child(1) {
+  color: var(--text-color);
+}
+
+nav > div > p:nth-child(2) {
+  color: var(--primary-color);
 }
 
 #carousel_container {

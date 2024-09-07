@@ -3,7 +3,7 @@ import RootComponentOfCars from "./RootComponentOfCars";
 const  Offroad = () => {
   return (
     <div>
-      <RootComponentOfCars category="offroad" />
+      <RootComponentOfCars category="Offroad" />
     </div>
   );
 };

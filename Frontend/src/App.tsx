@@ -6,7 +6,7 @@ import Convertible from "./pages/Convertible";
 import Sedan from "./pages/Sedan";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faUser } from "@fortawesome/free-solid-svg-icons";
-import logo from "./images/logo.webp";
+import logo from "./images/logo.jpeg";
 
 const Homepage = lazy(() => import("./homepage/Homepage"));
 import "./styles/header.css";
