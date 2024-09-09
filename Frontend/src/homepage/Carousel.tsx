@@ -96,7 +96,7 @@ const Carousel = () => {
             <FontAwesomeIcon icon={faAngleLeft} />
           </button>
 
-          <button onClick={moveToNext}>
+          <button onClick={moveToNext} style={{ display: index === 5 ? "none" : "block" }}>
             <FontAwesomeIcon icon={faAngleRight} />
           </button>
         </div>

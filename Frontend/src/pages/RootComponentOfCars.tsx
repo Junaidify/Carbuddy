@@ -171,7 +171,7 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
           {filteredData.map((car) => (
             <div
               key={car._id}
-              onClick={() => navigate(`/${category}/:${car._id}`)}
+              onClick={() => navigate(`/${category}/${car._id}`)}
             >
               <div className="categorised_car_img_section">
                 <img

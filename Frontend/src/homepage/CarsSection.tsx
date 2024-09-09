@@ -153,10 +153,24 @@ const CarsSection = () => {
             </div>
 
             <div className="toprated_nav_btn">
-              <button onClick={handlePrev}>
+              <button
+                onClick={handlePrev}
+                style={
+                  index === 0
+                    ? { visibility: "hidden" }
+                    : { visibility: "visible" }
+                }
+              >
                 <FontAwesomeIcon icon={faChevronLeft} />
               </button>
-              <button onClick={handleNext}>
+              <button
+                onClick={handleNext}
+                style={
+                  index === cars.length - 1
+                    ? { visibility: "hidden" }
+                    : { visibility: "visible" }
+                }
+              >
                 <FontAwesomeIcon icon={faChevronRight} />
               </button>
             </div>

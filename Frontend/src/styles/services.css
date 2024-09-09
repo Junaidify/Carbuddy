@@ -1,13 +1,3 @@
-:root {
-  --primary-color: #e61515;
-  --secondary-color: #660e66;
-  --tertairy-color: #6b0fc2;
-  --background-color: #22384e;
-  --text-color: #1d3f3c;
-  --white-color: #f8f9fa;
-  --heading-size: 3rem;
-}
-
 #service_wrapper {
   width: 80%;
   margin: 10dvh auto 0;
@@ -18,7 +8,7 @@
   font-size: 3rem;
   font-weight: bold;
   margin: 0 0 3dvh 0;
-  color: var(--text-color);
+  color: var(--primary-color);
 }
 
 #services_section {
@@ -90,7 +80,7 @@
 }
 
 #customer_review > div:nth-child(1) > h1 {
-  color: var(--text-color);
+  color: var(--primary-color);
   font-weight: bold;
   font-size: var(--heading-size);
 }

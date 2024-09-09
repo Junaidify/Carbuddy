@@ -13,7 +13,7 @@ export const useFetch = (url: string, category: string): void => {
       try {
         const res = await axios.get(url, {
           params: {
-            category: category,
+            category: category
           }
         });
 

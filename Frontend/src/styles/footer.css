@@ -1,12 +1,3 @@
-:root {
-  --primary-color: #e61515;
-  --secondary-color: #660e66;
-  --tertairy-color: #2c0c4b;
-  --background-color: #22384e;
-  --text-color: #1d3f3c;
-  --white-color: #f8f9fa;
-}
-
 #footer {
   width: 100%;
   height: fit-content;
@@ -63,6 +54,12 @@
 #footer_second_children > div > p > a {
   text-decoration: none;
   color: black;
+}
+
+#footer_second_children > div > p {
+  display: flex;
+  flex-direction: row;
+  column-gap: 0.5dvw;
 }
 
 #footer_second_children > div > p > a > span {

@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import "./App.css";
 import SuvCar from "./pages/SuvCar";
-import { NavLink, Route, Routes, useParams } from "react-router-dom";
+import { NavLink, Route, Routes } from "react-router-dom";
 import Convertible from "./pages/Convertible";
 import Sedan from "./pages/Sedan";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,8 +14,6 @@ import Offroad from "./pages/Offroad";
 import ProductDetails from "./productpage/ProductDetails";
 
 function App() {
-  const id = useParams();
-
   return (
     <>
       <nav>
@@ -52,7 +50,7 @@ function App() {
         <Route path="/convertible" element={<Convertible />} />
         <Route path="/offroad" element={<Offroad />} />
         <Route path="/sedan" element={<Sedan />} />
-        <Route path={`/suv/:${id.id}`} element={<ProductDetails />} />
+        <Route path={`/:category/:id`} element={<ProductDetails />} />
       </Routes>
     </>
   );
