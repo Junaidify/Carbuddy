@@ -21,106 +21,125 @@ main > h1 {
   column-gap: 2dvw;
 }
 
-#product_details_container > div:nth-child(1) {
+#product_details_image {
   aspect-ratio: 3 / 2;
 }
 
-#product_details_container > div:nth-child(1) img {
+#product_details_image > img {
   width: 100%;
   height: 100%;
 }
 
-#product_details_container > div:nth-child(1) > div {
+#product_details_image > div {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
   column-gap: 1dvw;
 }
 
-#product_details_container > div:nth-child(1) > div > img {
+#product_details_image > div > img {
   width: 100%;
   height: 100%;
   border-radius: 10px;
 }
 
-#product_details_container > div:nth-child(2) {
+#product_details_content {
   display: flex;
   flex-direction: column;
   row-gap: 2dvh;
 }
 
-#product_details_container > div:nth-child(2) h1 {
+#product_details_content > h1 {
   font-size: 2.5rem;
   font-weight: bold;
-  color: var(--primary-color);
+  color: var(--tertairy-color);
   margin-bottom: 1dvh;
 }
 
-#product_details_container > div:nth-child(2) > div:nth-child(2),
-#product_details_container > div:nth-child(2) > div:nth-child(3) {
+#product_details_features{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   font-size: 1.2rem;
   column-gap: 1dvw;
+  width: 75%;
+  row-gap: 1dvh;
 }
 
-#product_details_container > div:nth-child(2) > div:nth-child(4) > h2 {
-  margin: 1dvh 0;
-  color: var(--tertairy-color);
-}
-
-#product_details_container > div:nth-child(2) > div > p {
+#product_details_features > p {
   display: flex;
   align-items: center;
   justify-content: start;
   column-gap: 0.5dvw;
 }
 
-#product_details_container > div:nth-child(2) > div:nth-child(4) > ul {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1dvh;
-  width: 95%;
-  margin: 0 auto;
-}
-
-#product_details_container > div:nth-child(2) > div:nth-child(4) {
+#product_details_specifications {
   display: flex;
   flex-direction: column;
   row-gap: 1dvh;
   margin: 1dvh 0;
 }
 
-#product_details_container
-  > div:nth-child(2)
-  > div:nth-child(4)
-  > ul
-  > li
-  > strong {
+#product_details_specifications > h2 {
+  margin: 1dvh 0;
+  color: var(--tertairy-color);
+}
+
+#product_details_specifications > ul {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1dvh;
+  margin-left: 1dvw;
+}
+
+#product_details_specifications > ul > li > strong {
   font-size: 1.1rem;
 }
 
-#product_details_container > div:nth-child(2) > p:nth-last-child(2) {
-  font-size: 1.2rem;
+#product_details_price {
+  font-size: 1.7rem;
   font-weight: bold;
-
-  margin: 2dvh 0 0 0dvw;
-
+  color: var(--primary-color);
+  margin: 1dvh 0 0 0dvw;
 }
 
-#product_details_container > div:nth-child(2) > div:nth-last-child(1) {
+#product_details_availability > div {
   display: flex;
   flex-direction: row;
-  margin: 5dvh 0;
-  justify-content: space-evenly;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
 }
 
-#product_details_container > div:nth-child(2) > div:nth-last-child(1) > button {
+#product_details_availability > h3{
+  color: var(--tertairy-color); 
+  font-weight: bold;
+  margin-bottom: 1dvh;
+}
+
+#product_details_availability > div > input {
+  font-size: 1rem;
   border: none;
-  padding: 1.5dvh 3dvw;
-  font-size: 1.2rem;
+}
+
+#product_details_availability > div > p {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+#product_details_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 1dvh;
+}
+
+#product_details_buttons button {
+  border: none;
+  padding: 1.5dvh 1dvw;
+  font-size: 1.1rem;
+  width: 35%;
   border-radius: 20px;
-  background: var(--primary-color);
+  background: seagreen;
   color: var(--white-color);
 }
 
@@ -128,5 +147,5 @@ main > h1 {
   > div:nth-child(2)
   > div:nth-last-child(1)
   > button:active {
-  background: #9e0771;
+  background: slategray;
 }

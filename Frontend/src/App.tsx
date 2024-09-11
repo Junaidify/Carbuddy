@@ -7,6 +7,7 @@ import Sedan from "./pages/Sedan";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faUser } from "@fortawesome/free-solid-svg-icons";
 import logo from "./images/logo.jpeg";
+import Payment from "./productpage/payment";
 
 const Homepage = lazy(() => import("./homepage/Homepage"));
 import "./styles/header.css";
@@ -51,6 +52,7 @@ function App() {
         <Route path="/offroad" element={<Offroad />} />
         <Route path="/sedan" element={<Sedan />} />
         <Route path={`/:category/:id`} element={<ProductDetails />} />
+        <Route path="/booking" element={<Payment />} />
       </Routes>
     </>
   );

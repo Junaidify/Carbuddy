@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { CarPropTypes, InitialStatePropTypes } from "../constant/interfaces";
 import { useFetch } from "../hooks/useFetch";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 // import styling
@@ -10,11 +10,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGasPump, faGauge } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../homepage/Footer";
 
+
 const ProductDetails = () => {
   const { id, category } = useParams();
   useFetch("http://localhost:3000/cars", category || "SUV");
   const { cars } = useSelector((state: InitialStatePropTypes) => state.cars);
   const [filteredData, setFilteredData] = useState<CarPropTypes>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (cars.length > 0) {
@@ -31,17 +33,17 @@ const ProductDetails = () => {
         <h1>Home / {category} Cars</h1>
         {filteredData && (
           <div id="product_details_container" key={filteredData._id}>
-            <div>
+            <div id="product_details_image">
               <img src={filteredData.image} alt="" />
               <div>
                 <img src={filteredData.image} alt="" />
                 <img src={filteredData.image} alt="" />
               </div>
             </div>
-            <div>
+            <div id="product_details_content">
               <h1>{filteredData.name}</h1>
 
-              <div>
+              <div id="product_details_features">
                 <p>
                   <strong style={{ color: "var(--primary-color)" }}>
                     <span className="material-symbols-outlined">chair</span>
@@ -56,8 +58,7 @@ const ProductDetails = () => {
                   </strong>
                   {filteredData.transmission}
                 </p>
-              </div>
-              <div>
+
                 <p>
                   <strong style={{ color: "var(--primary-color)" }}>
                     <FontAwesomeIcon icon={faGauge} />{" "}
@@ -75,49 +76,52 @@ const ProductDetails = () => {
                   {filteredData.fuel}
                 </p>
               </div>
-              <div>
-                <h2>Specifications</h2>
+              <div id="product_details_specifications">
+                <h2>Technology Included</h2>
                 <ul>
-                  <li>
-                    <strong>Powerful Performance:</strong> Features a 3.3-liter
-                    V6 diesel engine for exceptional off-road power.
-                  </li>
-                  <li>
-                    <strong>Advanced Off-Road Technologies:</strong> Equipped
-                    with Vehicle Stability Control and Multi-Terrain Select for
-                    superior handling.
-                  </li>
-                  <li>
-                    <strong>Flexible Seating:</strong> Offers flexible seating
-                    for up to 7 passengers in a luxurious and comfortable cabin.
-                  </li>
-                  <li>
-                    <strong> Comprehensive Safety Features:</strong> Includes
-                    advanced safety technologies like Pre-Collision System for
-                    enhanced protection
-                  </li>
-                  <li>
-                    <strong>Modern Connectivity:</strong> Provides Bluetooth,
-                    USB connections, and smartphone integration for a seamless
-                    driving experience.
-                  </li>
+                  <li>Bluetooth Connectivity</li>
+                  <li>GPS Navigation</li>
+                  <li>USB Charging Ports</li>
+                  <li>Voice Controls</li>
+                  <li>Advanced Driver Assistance Systems (ADAS)</li>
                 </ul>
               </div>
 
-              <p>
+              <div id="product_details_price">
                 <span
-                  style={{                 
-                 fontSize: "1.5rem",
+                  style={{
+                    fontSize: "1.3rem",
                     color: "var(--tertairy-color)",
                   }}
                 >
-                 Rent at: 
+                  Rent at:
                 </span>{" "}
                 ${filteredData.bookingAmount}/day
-              </p>
-              <div>
-                <button>Add To Wishlist</button>
-                <button>Book Now</button>
+              </div>
+
+              <hr />
+              <div id="product_details_availability">
+                <h3>Check Availability</h3>
+                <div>
+                  <input type="date" />
+                  <p>Available</p>
+                </div>
+              </div>
+           
+              <div id="product_details_buttons">
+                <button>Save to favourites</button>
+                <button onClick={() => navigate("/booking")}>Book Now</button>
+              </div>
+              <hr />
+              <div id="product_details_specifications">
+                <h2>Specifications</h2>
+                <ul>
+                  <li>Powerful Performance</li>
+                  <li>Advanced Off-Road Technologies</li>
+                  <li>Flexible Seating</li>
+                  <li>Advanced safety technologies</li>
+                  <li>Modern Connectivity</li>
+                </ul>
               </div>
             </div>
           </div>
