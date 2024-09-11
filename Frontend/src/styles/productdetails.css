@@ -1,0 +1,132 @@
+main {
+  margin: 0 auto;
+  width: 80%;
+  margin-bottom: 10dvh;
+  position: relative;
+}
+
+main > h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 1rem;
+}
+
+#product_details_container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 5dvh auto 0;
+  column-gap: 2dvw;
+}
+
+#product_details_container > div:nth-child(1) {
+  aspect-ratio: 3 / 2;
+}
+
+#product_details_container > div:nth-child(1) img {
+  width: 100%;
+  height: 100%;
+}
+
+#product_details_container > div:nth-child(1) > div {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  column-gap: 1dvw;
+}
+
+#product_details_container > div:nth-child(1) > div > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+#product_details_container > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2dvh;
+}
+
+#product_details_container > div:nth-child(2) h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 1dvh;
+}
+
+#product_details_container > div:nth-child(2) > div:nth-child(2),
+#product_details_container > div:nth-child(2) > div:nth-child(3) {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  font-size: 1.2rem;
+  column-gap: 1dvw;
+}
+
+#product_details_container > div:nth-child(2) > div:nth-child(4) > h2 {
+  margin: 1dvh 0;
+  color: var(--tertairy-color);
+}
+
+#product_details_container > div:nth-child(2) > div > p {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  column-gap: 0.5dvw;
+}
+
+#product_details_container > div:nth-child(2) > div:nth-child(4) > ul {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1dvh;
+  width: 95%;
+  margin: 0 auto;
+}
+
+#product_details_container > div:nth-child(2) > div:nth-child(4) {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1dvh;
+  margin: 1dvh 0;
+}
+
+#product_details_container
+  > div:nth-child(2)
+  > div:nth-child(4)
+  > ul
+  > li
+  > strong {
+  font-size: 1.1rem;
+}
+
+#product_details_container > div:nth-child(2) > p:nth-last-child(2) {
+  font-size: 1.2rem;
+  font-weight: bold;
+
+  margin: 2dvh 0 0 0dvw;
+
+}
+
+#product_details_container > div:nth-child(2) > div:nth-last-child(1) {
+  display: flex;
+  flex-direction: row;
+  margin: 5dvh 0;
+  justify-content: space-evenly;
+}
+
+#product_details_container > div:nth-child(2) > div:nth-last-child(1) > button {
+  border: none;
+  padding: 1.5dvh 3dvw;
+  font-size: 1.2rem;
+  border-radius: 20px;
+  background: var(--primary-color);
+  color: var(--white-color);
+}
+
+#product_details_container
+  > div:nth-child(2)
+  > div:nth-last-child(1)
+  > button:active {
+  background: #9e0771;
+}

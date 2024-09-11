@@ -23,8 +23,8 @@ const CarsSection = () => {
 
   // Ref to the container holding car items
   const carRef = useRef<HTMLDivElement | null>(null);
-  const [index, setIndex] = useState<number>(0);
-  const [active, setActive] = useState<number>(0);
+  const [index, setIndex] = useState<number>(3);
+  const [active, setActive] = useState<number>(3);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const CarsSection = () => {
         const childDiv = child as HTMLDivElement;
 
         // Reset the transform for all children first
-        childDiv.style.transform = "scale(0.6) perspective(16px) rotateY(0deg)";
+        childDiv.style.transform = "scale(0.6) perspective(20px) rotateY(0deg)";
 
         if (idx < active) {
           // Left side of the active element

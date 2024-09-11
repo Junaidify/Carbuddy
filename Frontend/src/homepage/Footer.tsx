@@ -32,10 +32,6 @@ const Footer = () => {
             <h1>Contact Info</h1>
             <div>
               <p>
-                <span className="material-symbols-outlined">call</span>{" "}
-                9582870760
-              </p>
-              <p>
                 <span className="material-symbols-outlined">
                   mark_email_unread
                 </span>{" "}

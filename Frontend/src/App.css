@@ -4,6 +4,12 @@
   padding: 0;
 }
 
+head,
+body {
+  height: 100%;
+  width: 100%;
+}
+
 :root {
   --primary-color: #63030b;
   --secondary-color: #143846;

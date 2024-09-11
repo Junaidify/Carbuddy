@@ -16,7 +16,7 @@
 #categorised_car_filter_container > h2 {
   font-size: 2rem;
   font-weight: 600;
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 #categorised_car_filter {
@@ -28,7 +28,7 @@
 #categorised_car_filter > div > h3 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 #categorised_car_filter > div > div {
@@ -54,6 +54,13 @@
 #categorised_car_container > div {
   box-shadow: 0 0 10px 0 var(--tertairy-color);
   padding: 2dvh 1dvw;
+  border-radius: 10px;
+}
+
+#categorised_car_container > div > div:nth-child(1) img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3 / 2;
   border-radius: 10px;
 }
 
