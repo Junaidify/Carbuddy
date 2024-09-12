@@ -1,13 +1,14 @@
 import { lazy } from "react";
 import "./App.css";
 import SuvCar from "./pages/SuvCar";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { NavLink, Route, Routes, useNavigate } from "react-router-dom";
 import Convertible from "./pages/Convertible";
 import Sedan from "./pages/Sedan";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faUser } from "@fortawesome/free-solid-svg-icons";
 import logo from "./images/logo.jpeg";
 import Payment from "./productpage/payment";
+import Login from "./authentication/Login";
 
 const Homepage = lazy(() => import("./homepage/Homepage"));
 import "./styles/header.css";
@@ -15,6 +16,7 @@ import Offroad from "./pages/Offroad";
 import ProductDetails from "./productpage/ProductDetails";
 
 function App() {
+  const navigate = useNavigate();
   return (
     <>
       <nav>
@@ -37,7 +39,7 @@ function App() {
         </div>
 
         <div>
-          <p>
+          <p onClick={() => navigate("/login") }>
             <FontAwesomeIcon icon={faUser} />
           </p>
           <p>
@@ -53,6 +55,7 @@ function App() {
         <Route path="/sedan" element={<Sedan />} />
         <Route path={`/:category/:id`} element={<ProductDetails />} />
         <Route path="/booking" element={<Payment />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   );
