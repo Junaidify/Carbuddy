@@ -38,11 +38,13 @@
   margin-top: 1dvh;
 }
 
-#categorised_car_filter > div > div > p {
+#categorised_car_filter > div > div > div {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
+
+/* ------------------- Categorised Car ------------------- */
 
 #categorised_car_container {
   display: grid;

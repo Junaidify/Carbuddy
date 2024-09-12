@@ -1,0 +1,211 @@
+#payment_section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+ 
+  width: 80%;
+  margin: 5dvh auto 0;
+}
+
+#payment_section > form {
+  width: 90%;
+}
+
+#payment_section > form > h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 3dvh;
+}
+
+.personal_details {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5dvh;
+}
+
+.personal_details > div {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1.5dvh;
+  align-items: center;
+  width: 90%;
+}
+
+.personal_details > div > label {
+  font-size: 1.2rem;
+  width: 10%;
+}
+
+.personal_details > div > input {
+  width: 75%;
+  border-radius: 0.5rem;
+  padding: 1dvh 1dvw;
+  background: whitesmoke;
+  font-size: 1rem;
+  border: none;
+}
+
+#payment_section > form > h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin: 6dvh 0 2dvh;
+}
+
+.address > div:nth-child(1),
+.address > div:nth-child(2) {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1.5dvh;
+  align-items: center;
+}
+
+.address > div:nth-child(1) > div,
+.address > div:nth-child(2) > div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1dvh;
+  margin: 1dvh 0;
+}
+
+.address > div > div > label {
+  font-size: 1.2rem;
+}
+
+.address > div > div > input,
+.address > div > div:nth-last-child(1) > select {
+  border-radius: 0.5rem;
+  padding: 1dvh 1dvw;
+  background: whitesmoke;
+  font-size: 1rem;
+  border: none;
+}
+
+/* ----------------- Payment Section ---------------- */
+
+#payment_gateway {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5dvh;
+}
+
+#payment_gateway label {
+  font-size: 1.2rem;
+}
+
+#payment_gateway input {
+  border-radius: 0.5rem;
+  padding: 1dvh 1dvw;
+  background: whitesmoke;
+  font-size: 1rem;
+  border: none;
+}
+
+#payment_gateway > h2{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin: 2dvh 0 dvh;
+}
+
+.payment_method {
+  display: flex;
+  flex-direction: row;
+  column-gap: 2dvw;
+}
+
+.payment_method > div {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1dvh;
+}
+
+.customer_name {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5dvh;
+  margin-top: 1dvh;
+}
+
+#card_details {
+  width: 70%;
+  box-shadow: 0 0 10px 0 var(--tertairy-color);
+  border-radius: 0.5rem;
+  padding: 1dvh 1dvw;
+  height: 25dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 5dvh;
+  background-image: url("../images/social_media_2.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  
+}
+
+#card_details > .card_number{
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5dvh;
+}
+
+#card_details  label{
+  color: var(--tertairy-color);
+  font-weight: bolder;
+}
+
+#card_details > .card_expiry_cvv {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1.5dvh;
+}
+
+#card_details > .card_expiry_cvv > div {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1.5dvh;
+  align-items: center;
+}
+
+#card_details > .card_expiry_cvv > div > input{
+  width: 50%;
+}
+
+/* ----------------- Payment Section ---------------- */
+
+#card_otp {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5dvh;
+}
+
+#card_otp > div {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1.5dvh;
+}
+
+#card_otp > label {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  font-weight: bolder;
+}
+
+#card_otp > div > input {
+  width: 10%;
+  text-align: center;
+  padding: 1dvh 1dvw;
+  border: 1px solid var(--primary-color);
+  font-size: 1.5rem;
+}
+
+#payment_section button {
+  border-radius: 0.5rem;
+  padding: 1dvh 1dvw;
+  background: var(--another-color);
+  font-size: 1.5rem;
+  border: none;
+  color: var(--white-color);
+  font-weight: bolder;
+  margin-top: 1dvh;
+}

@@ -28,7 +28,7 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
     bookingAmount: [],
   });
 
-  const handleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChecked = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
     const { name, checked, dataset } = e.target;
     const category = dataset.category as keyof typeof selectedFilters;
 
@@ -83,12 +83,12 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
       {" "}
       <div id="carcategorypage">
         <div id="categorised_car_filter_container">
-          <h2>Choose a perfect car</h2>
+          <h2>Filter By</h2>
           <div id="categorised_car_filter">
             <div>
-              <h3>Filter By Transmission</h3>
+              <h3>Transmission</h3>
               <div>
-                <p>
+                <div>
                   <input
                     type="checkbox"
                     id="manual"
@@ -97,8 +97,8 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
                     onChange={handleChecked}
                   />
                   <label htmlFor="manual">Manual</label>
-                </p>
-                <p>
+                </div>
+                <div>
                   <input
                     type="checkbox"
                     name="automatic"
@@ -106,13 +106,13 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
                     onChange={handleChecked}
                   />
                   <label htmlFor="automatic">Automatic</label>
-                </p>
+                </div>
               </div>
             </div>
             <div>
-              <h3>Filter By Fuel</h3>
+              <h3>Fuel</h3>
               <div>
-                <p>
+                <div>
                   <input
                     type="checkbox"
                     name="diesel"
@@ -120,8 +120,8 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
                     onChange={handleChecked}
                   />
                   <label htmlFor="diesel">Diesel</label>
-                </p>
-                <p>
+                </div>
+                <div>
                   <input
                     type="checkbox"
                     name="petrol"
@@ -129,14 +129,14 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
                     onChange={handleChecked}
                   />
                   <label htmlFor="petrol">Petrol</label>
-                </p>
+                </div>
               </div>
             </div>
 
             <div>
-              <h3>Filter By Price</h3>
+              <h3>Price</h3>
               <div>
-                <p>
+                <div>
                   <input
                     type="checkbox"
                     name="50-100"
@@ -144,8 +144,8 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
                     onChange={handleChecked}
                   />
                   <label htmlFor="50-200">$50 - $200</label>
-                </p>
-                <p>
+                </div>
+                <div>
                   <input
                     type="checkbox"
                     name="100-150"
@@ -153,8 +153,8 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
                     onChange={handleChecked}
                   />
                   <label htmlFor="200-250">$200 - $250</label>
-                </p>
-                <p>
+                </div>
+                <div>
                   <input
                     type="checkbox"
                     name="150-300"
@@ -162,8 +162,23 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
                     onChange={handleChecked}
                   />
                   <label htmlFor="250-300">$250 - $300</label>
-                </p>
+                </div>
               </div>
+            </div>
+            <div>
+              <h3>Brand</h3>
+              <select data-category="brand" onChange={handleChecked} name="brand" id="brand">
+                <option value="">------- Select Brand -------</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Hyundai">Hyundai</option>
+                <option value="Kia">Kia</option>
+                <option value="BMW">BMW</option>
+                <option value="Mercedes">Mercedes</option>
+                <option value="Audi">Audi</option>
+                <option value="Volkswagen">Volkswagen</option>
+                <option value="Nissan">Nissan</option>
+                <option value="Skoda">Skoda</option>
+              </select>
             </div>
           </div>
         </div>
