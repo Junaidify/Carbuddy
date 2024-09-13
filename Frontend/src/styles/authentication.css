@@ -23,6 +23,10 @@
   color: var(--primary-color);
 }
 
+#signUp {
+  margin-top: 3dvh;
+}
+
 #signUp > div {
   display: flex;
   flex-direction: column;
@@ -48,6 +52,19 @@
   left: 0.5dvw;
   color: var(--secondary-color);
   transition: top 0.3s ease-in-out;
+}
+
+#signUp > div > div:nth-child(4) > button,
+#login > div > div:nth-child(2) > button {
+  position: absolute;
+  top: 1.5dvh;
+  right: 1dvw;
+  color: var(--secondary-color);
+  transition: top 0.3s ease-in-out;
+  font-size: 1.2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 #signUp > div > div > input,
@@ -78,16 +95,37 @@
   font-size: 0.8rem;
 }
 
-#signUp > div > button {
-  width: 50%;
-  margin: 0 auto;
-  padding: 1dvh 0;
+#signUp > div > div:nth-last-child(1),
+#login > div > div:nth-last-child(1) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1dvh;
+}
+
+#signUp > div > div:nth-last-child(1) > button,
+#login > div > div:nth-last-child(1) > button {
   background-color: var(--primary-color);
   color: var(--white-color);
+  width: 60%;
   border: none;
   font-size: 1.2rem;
   font-weight: bold;
+  padding: 1dvh 3dvw;
+  margin: 0 auto;
   border-radius: 0.5dvw;
+  cursor: pointer;
+}
+
+#signUp > div > div:nth-last-child(1) > div > button,
+#login > div > div:nth-last-child(1) > div > button{
+  font-weight: bold;
+  color: var(--secondary-color);
+  background: none;
+  padding: 0.2dvh 0.5dvw;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 /* ---------- Login and SignUp Page CSS End --------------- */
@@ -106,19 +144,8 @@
   margin: 5dvh auto 0;
 }
 
-#login > div > div:nth-last-child(1) {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 2dvw;
-}
+/* ----------- animation ---------------------  */
 
-#login > div > div:nth-last-child(1) > button {
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  border: none;
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 1dvh 3dvw;
-  margin: 0 auto;
-  border-radius: 0.5dvw;
+#login_signup {
+  transition: background 0.5s ease-in-out;
 }

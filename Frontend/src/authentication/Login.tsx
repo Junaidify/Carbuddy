@@ -1,15 +1,26 @@
-import {} from "react";
-
-// import Styling
+import { useState } from "react";
 import "../styles/authentication.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
+  const [login, setLogin] = useState<boolean>(false);
+  const [loginPasswordShown, setLoginPasswordShown] = useState<boolean>(false);
+  const [signUpPasswordShown, setSignUpPasswordShown] =
+    useState<boolean>(false);
+  const rotateDegree = login ? "0deg" : "215deg";
+
+  const gradientStyle = {
+    background: `conic-gradient(from ${rotateDegree} at 50% 0, var(--primary-color) 0%, var(--primary-color) 40%, transparent 40%, transparent 70%)`,
+    transition: "background 1s ease-in-out",
+  };
+
   return (
     <>
       <div id="login_signup_wrapper">
-        <div id="login_signup">
-          <div id="signUp">
-            <h1>Sign Up</h1>
+        <div id="login_signup" style={gradientStyle}>
+          <div id="signUp" style={{ visibility: login ? "visible" : "hidden" }}>
+            <h1>Welcome User !</h1>
             <div>
               <div>
                 <input type="text" id="name" required />
@@ -24,16 +35,34 @@ const Login = () => {
                 <label htmlFor="phone">Phone</label>
               </div>
               <div>
-                <input type="password" id="password" required />
+                <input
+                  type={signUpPasswordShown ? "text" : "password"}
+                  id="password"
+                  required
+                />
+                <button onClick={() => setSignUpPasswordShown((prev) => !prev)}>
+                  {" "}
+                  {signUpPasswordShown ? (
+                    <FontAwesomeIcon icon={faEye} />
+                  ) : (
+                    <FontAwesomeIcon icon={faEyeSlash} />
+                  )}{" "}
+                </button>
                 <label htmlFor="password">Password</label>
               </div>
 
-              <button>Sign Up</button>
+              <div>
+                <button onClick={() => setLogin(!login)}>Sign Up</button>
+                <div>
+                  Account already exist{" "}
+                  <button onClick={() => setLogin(!login)}>Login</button>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div id="login">
-            <h1>Login</h1>
+          <div id="login" style={{ visibility: login ? "hidden" : "visible" }}>
+            <h1>Welcome Back !</h1>
             <div>
               <div>
                 <input type="text" id="user_email" required />
@@ -41,16 +70,32 @@ const Login = () => {
               </div>
 
               <div>
-                <input type="password" id="user_password" required />
+                <input
+                  type={loginPasswordShown ? "text" : "password"}
+                  id="user_password"
+                  required
+                />
+                <button onClick={() => setLoginPasswordShown((prev) => !prev)}>
+                  {" "}
+                  {loginPasswordShown ? (
+                    <FontAwesomeIcon icon={faEye} />
+                  ) : (
+                    <FontAwesomeIcon icon={faEyeSlash} />
+                  )}{" "}
+                </button>
                 <label htmlFor="user_password">Password</label>
               </div>
 
               <div>
-                <button>Sign Up</button>
                 <button>Login</button>
+                <div>
+                  Account doesn't exist{" "}
+                  <button onClick={() => setLogin(!login)}>Sign Up</button>
+                </div>
               </div>
             </div>
           </div>
+          <div id="image"></div>
         </div>
       </div>
     </>
