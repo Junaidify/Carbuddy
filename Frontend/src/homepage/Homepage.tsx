@@ -3,21 +3,20 @@ import { lazy, Suspense } from "react";
 // Importing dashboard components
 const Carousel = lazy(() => import("../homepage/Carousel"));
 const CarsSection = lazy(() => import("../homepage/CarsSection"));
-const Services = lazy(() => import("../homepage/Services"));
 const OffRoadAndKnowMore = lazy(() => import("../homepage/OffRoadAndKnowMore"));
 const Footer = lazy(() => import("../homepage/Footer"));
 
+// Importing styling
+import "../styles/homepage.css";
+
 const Homepage = () => {
   return (
-    <div>
+    <div id="homepage">
       <Suspense fallback={<div>Loading...</div>}>
         <Carousel />
       </Suspense>
       <Suspense fallback={<div>Loading...</div>}>
         <CarsSection />
-      </Suspense>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Services />
       </Suspense>
       <Suspense fallback={<div>Loading...</div>}>
         <OffRoadAndKnowMore />

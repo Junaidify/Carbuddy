@@ -1,52 +1,67 @@
-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 99%;
-  height: 85dvh;
-  font-family: "Times New Roman", Times, serif;
-  margin: auto;
+#navigation {
+  width: 100%;
+  height: 7dvh;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+@property --range {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 120deg;
 }
 
 nav {
   display: grid;
   grid-template-columns: 20% 40% 10%;
+  width: 99.5%;
+  height: 7dvh;
+  margin: 0 auto;
+  position: relative;
   justify-content: space-around;
   align-content: center;
-  width: 100%;
-  height: 7dvh;
+  background-color: whitesmoke;
+  position: absolute;
+  top: 0.3dvh;
+  left: -0dvw;
+  border-radius: 10px;
   position: relative;
-  background: white;
-  top: 0;
 }
 
-nav::before,
-nav::after {
+#navigation > div {
   position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 110%;
+  height: 120%;
+  z-index: -3;
+}
+
+#navigation > div::before,
+#navigation > div::after {
   content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: conic-gradient(
-    from var(--rotate),
-    transparent 80%,
-    rgb(104, 9, 91)
-  );
-  padding: 2px 4px;
-  z-index: -1;
-  animation: header-animation 2s infinite forwards;
+  background-image: conic-gradient(from var(--range), red, green, blue, violet, yellow, red);
+  z-index: 2;
+  animation: slider 3s infinite linear;
 }
 
-nav::before {
+#navigation > div::after {
   filter: blur(1.5rem);
-  opacity: 0.5;
+  opacity: 0.2;
 }
 
-@keyframes header-animation {
-  from {
-    --rotate: 120deg;
+@keyframes slider {
+  0% {
+    --range: 0deg;
   }
-  to {
-    --rotate: 300deg;
+  100% {
+    --range: 360deg;
   }
 }
 
@@ -80,9 +95,8 @@ nav > div > .navlink:after {
 }
 
 nav > div > .navlink:hover {
-  transform: scale3d(1.1, 1.1, 1.1);
-  filter: drop-shadow(0 0 10px var(--primary-color));
-  transition: transform 0.5s ease-in-out;
+  transform: scale3d(1.2, 1.2, 1.2);
+  transition: transform 0.2s ease-in-out;
 }
 
 nav > div > .navlink:hover::after {
@@ -121,7 +135,7 @@ nav > .logo_parent > img {
     transform: scale(1);
   }
   to {
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
 }
 
@@ -135,41 +149,36 @@ nav > div > p:nth-child(2) {
 
 /* -------------- Carousel -------------- */
 
-#carousel_container {
+#carousel_wrapper {
   width: 100%;
-  position: relative;
   height: fit-content;
-}
-
-#carousel {
-  width: 100%;
-  display: flex;
+  position: relative;
   overflow: hidden;
 }
 
-#images {
+#image_container {
   display: flex;
-  width: 600vw;
-  height: 90dvh;
+  width: 500vw;
+  height: 100%;
 }
 
-.image_tag {
+.image {
   width: 100vw;
   height: 100%;
-  background-repeat: no-repeat;
-  background-size: 70%;
-  background-position: right center;
 }
 
 #button > button {
   position: absolute;
-  top: 50%;
+  top: 40%;
   font-size: 2.5rem;
   font-weight: bold;
-  color: var(--tertairy-color);
+  color: red;
   padding: 0.2rem;
   border-radius: 10px;
   border: none;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: background-color 0.5s ease-in-out;
 }
 
 #button button:nth-child(1) {
@@ -179,86 +188,3 @@ nav > div > p:nth-child(2) {
 #button button:nth-child(2) {
   right: 1vw;
 }
-
-.car_details {
-  position: absolute;
-  top: 8vw;
-  left: 7vw;
-  color: var(--primary-color);
-  font-weight: bold;
-}
-
-.car_details > p:nth-child(1) {
-  font-size: 0.9rem;
-  box-shadow: 0 0 10px 0 var(--tertairy-color);
-  width: fit-content;
-  padding: 0.2rem 1rem;
-  border-radius: 10%;
-}
-
-.car_details .car_details_title {
-  display: flex;
-  flex-direction: column;
-  margin: 0.5rem 0 1rem;
-}
-
-.car_details div > p:nth-child(1) {
-  font-size: 3.5rem;
-}
-
-.car_details div > p:nth-child(2) {
-  font-size: 2.5rem;
-}
-
-.car_details_bio {
-  font-size: 1.5rem;
-}
-
-.car_details button {
-  background-color: var(--secondary-color);
-  color: white;
-  font-weight: bold;
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 10px;
-  margin-top: 3rem;
-}
-
-.car_details_features {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: 30vw;
-  row-gap: 2vh;
-  column-gap: 2vw;
-  margin-top: 5rem;
-}
-
-.car_details_features div:nth-of-type(1),
-.car_details_features div:nth-of-type(2) {
-  font-size: 1.1rem;
-  display: flex;
-  flex-direction: column;
-  row-gap: 1vh;
-}
-
-.car_details_features div:nth-of-type(1) p:nth-of-type(1),
-.car_details_features div:nth-of-type(2) p:nth-of-type(1) {
-  font-size: 1.5rem;
-  width: fit-content;
-  padding: 1dvh;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-}
-
-.car_details_features div:nth-of-type(1) p:nth-of-type(2),
-.car_details_features div:nth-of-type(2) p:nth-of-type(2) {
-  font-size: 1.2rem;
-  color: var(--secondary-color);
-}
-
-.car_details_features div:nth-of-type(1) p:nth-of-type(3),
-.car_details_features div:nth-of-type(2) p:nth-of-type(3) {
-  font-size: 1rem;
-  color: var(--black-color);
-};
-

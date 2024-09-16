@@ -9,8 +9,10 @@ import { CarPropTypes, InitialStatePropTypes } from "../constant/interfaces";
 import {
   faChevronLeft,
   faChevronRight,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useSaveLater } from "../hooks/useSaveLater";
 
 const CarsSection = () => {
   const [category, setCategory] = useState<string>("SUV");
@@ -25,6 +27,7 @@ const CarsSection = () => {
   const carRef = useRef<HTMLDivElement | null>(null);
   const [index, setIndex] = useState<number>(3);
   const [active, setActive] = useState<number>(3);
+  const { isSaved, handleSaveLater } = useSaveLater();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -74,8 +77,6 @@ const CarsSection = () => {
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error occurred while fetching cars.</p>;
   if (!cars || cars.length === 0) return <p>No cars available</p>;
-
-  console.log(category.toLowerCase());
 
   return (
     <div id="cars_section">
@@ -134,11 +135,7 @@ const CarsSection = () => {
           <div id="toprated_cards_container">
             <div id="toprated_cars" ref={carRef}>
               {cars.map((car: CarPropTypes) => (
-                <div
-                  onClick={() => navigate(`/${category.toLowerCase()}`)}
-                  className="cars_card"
-                  key={car._id}
-                >
+                <div className="cars_card" key={car._id}>
                   <div className="toprated_img_section">
                     <img
                       style={{ width: "100%", height: "100%" }}
@@ -147,7 +144,27 @@ const CarsSection = () => {
                     />
                   </div>
 
-                  <div className="toprated_section_features">{car.name}</div>
+                  <div className="toprated_section_features">
+                    <details>
+                      <summary
+                        onClick={() => navigate(`/${category.toLowerCase()}`)}
+                      >
+                        Details
+                      </summary>
+                    </details>
+                  </div>
+
+                  <button
+                    className="toprated_save_btn"
+                    onClick={() => handleSaveLater(car._id)}
+                    style={{
+                      color: isSaved(car._id)
+                        ? "var(--primary-color)"
+                        : "var(--secondary-color)",
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faHeart} />
+                  </button>
                 </div>
               ))}
             </div>

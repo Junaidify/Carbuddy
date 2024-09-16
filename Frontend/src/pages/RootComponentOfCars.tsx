@@ -28,7 +28,11 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
     bookingAmount: [],
   });
 
-  const handleChecked = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChecked = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
     const { name, checked, dataset } = e.target;
     const category = dataset.category as keyof typeof selectedFilters;
 
@@ -167,18 +171,71 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
             </div>
             <div>
               <h3>Brand</h3>
-              <select data-category="brand" onChange={handleChecked} name="brand" id="brand">
-                <option value="">------- Select Brand -------</option>
-                <option value="Toyota">Toyota</option>
-                <option value="Hyundai">Hyundai</option>
-                <option value="Kia">Kia</option>
-                <option value="BMW">BMW</option>
-                <option value="Mercedes">Mercedes</option>
-                <option value="Audi">Audi</option>
-                <option value="Volkswagen">Volkswagen</option>
-                <option value="Nissan">Nissan</option>
-                <option value="Skoda">Skoda</option>
-              </select>
+              <div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="toyota"
+                    data-category="bookingAmount"
+                    onChange={handleChecked}
+                  />
+                  <label htmlFor="toyota">Toyota</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="bmw"
+                    data-category="bookingAmount"
+                    onChange={handleChecked}
+                  />
+                  <label htmlFor="bmw"> BMW</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="nissan"
+                    data-category="bookingAmount"
+                    onChange={handleChecked}
+                  />
+                  <label htmlFor="nissan"> Nissan</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="hyundai"
+                    data-category="bookingAmount"
+                    onChange={handleChecked}
+                  />
+                  <label htmlFor="hyundai"> Hyundai</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="kia"
+                    data-category="bookingAmount"
+                    onChange={handleChecked}
+                  />
+                  <label htmlFor="kia"> Kia</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="mercedes"
+                    data-category="bookingAmount"
+                    onChange={handleChecked}
+                  />
+                  <label htmlFor="mercedes"> Mercedes</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="hyundai"
+                    data-category="bookingAmount"
+                    onChange={handleChecked}
+                  />
+                  <label htmlFor="hyundai"> Hyundai</label>
+                </div>
+              </div>
             </div>
           </div>
         </div>

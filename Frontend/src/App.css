@@ -11,11 +11,9 @@ body {
 }
 
 :root {
-  --primary-color: #63030b;
+  --primary-color: #df2434;
   --secondary-color: #143846;
   --tertairy-color: #9e0771;
-  --white-color: #f8f9fa;
-  --black-color: #000;
   --heading-size: 3rem;
-  --another-color : #2e8b57; 
+  --button-color : #2e8b57; 
 }

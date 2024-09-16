@@ -19,34 +19,37 @@ function App() {
   const navigate = useNavigate();
   return (
     <>
-      <nav>
-        <NavLink className="logo_parent" to="/">
-          <img src={logo} alt="" />
-        </NavLink>
-        <div>
-          <NavLink className="navlink" to="/suv">
-            SUV{" "}
+      <div id="navigation">
+        <nav>
+          <NavLink className="logo_parent" to="/">
+            <img src={logo} alt="" />
           </NavLink>
-          <NavLink className="navlink" to="/sedan">
-            Sedan
-          </NavLink>
-          <NavLink className="navlink" to="/convertible">
-            Convertable
-          </NavLink>
-          <NavLink className="navlink" to="/offroad">
-            Off-Road
-          </NavLink>
-        </div>
+          <div>
+            <NavLink className="navlink" to="/suv">
+              SUV{" "}
+            </NavLink>
+            <NavLink className="navlink" to="/sedan">
+              Sedan
+            </NavLink>
+            <NavLink className="navlink" to="/convertible">
+              Convertable
+            </NavLink>
+            <NavLink className="navlink" to="/offroad">
+              Off-Road
+            </NavLink>
+          </div>
 
-        <div>
-          <p onClick={() => navigate("/login") }>
-            <FontAwesomeIcon icon={faUser} />
-          </p>
-          <p>
-            <FontAwesomeIcon icon={faHeart} />
-          </p>
-        </div>
-      </nav>
+          <div>
+            <p onClick={() => navigate("/login")}>
+              <FontAwesomeIcon icon={faUser} />
+            </p>
+            <p>
+              <FontAwesomeIcon icon={faHeart} />
+            </p>
+          </div>
+        </nav>
+        <div></div>
+      </div>
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/suv" element={<SuvCar />} />

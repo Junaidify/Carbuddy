@@ -8,10 +8,10 @@ const Login = () => {
   const [loginPasswordShown, setLoginPasswordShown] = useState<boolean>(false);
   const [signUpPasswordShown, setSignUpPasswordShown] =
     useState<boolean>(false);
-  const rotateDegree = login ? "0deg" : "215deg";
+  const rotateDegree = login ? "10deg" : "205deg";
 
   const gradientStyle = {
-    background: `conic-gradient(from ${rotateDegree} at 50% 0, var(--primary-color) 0%, var(--primary-color) 40%, transparent 40%, transparent 70%)`,
+    background: `conic-gradient(from ${rotateDegree} at 50% 0, var(--primary-color) 0%, var(--primary-color) 40%, white 40%, white 70%)`,
     transition: "background 1s ease-in-out",
   };
 
