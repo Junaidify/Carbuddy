@@ -32,4 +32,17 @@ saveCar.delete("/savelater", async (req, res) => {
   }
 });
 
+saveCar.get("/savelater", async (req, res) => {
+  try {
+    const savedCars = await SaveCar.find({});
+    const carId = savedCars.map((car) => car.carId);
+    const cars = await RentCar.find({ _id: { $in: carId } });
+
+    res.status(200).json(cars);
+  } catch (err) {
+    console.log("saveCar get error", err);
+    res.status(400).json({ message: "Invalid request" });
+  }
+});
+
 module.exports = saveCar;

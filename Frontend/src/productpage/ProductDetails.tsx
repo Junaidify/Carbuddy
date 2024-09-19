@@ -1,54 +1,41 @@
-import { useSelector } from "react-redux";
-import { CarPropTypes, InitialStatePropTypes } from "../constant/interfaces";
-import { useFetch } from "../hooks/useFetch";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 // import styling
 import "../styles/productdetails.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGasPump, faGauge } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../homepage/Footer";
-
+import { useProduct } from "../hooks/useProduct";
 
 const ProductDetails = () => {
   const { id, category } = useParams();
-  useFetch("http://localhost:3000/cars", category || "SUV");
-  const { cars } = useSelector((state: InitialStatePropTypes) => state.cars);
-  const [filteredData, setFilteredData] = useState<CarPropTypes>();
+ const saveCar = useProduct(id as string); 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (cars.length > 0) {
-      const matchedCar = cars.find((car: CarPropTypes) => car._id === id);
-      setFilteredData(matchedCar);
-    }
-  }, [cars, id]);
-
-  console.log(filteredData);
+  console.log(saveCar);
 
   return (
     <>
       <main>
         <h1>Home / {category} Cars</h1>
-        {filteredData && (
-          <div id="product_details_container" key={filteredData._id}>
+        {saveCar && (
+          <div id="product_details_container" key={saveCar._id}>
             <div id="product_details_image">
-              <img src={filteredData.image} alt="" />
+              <img src={saveCar.image} alt="" />
               <div>
-                <img src={filteredData.image} alt="" />
-                <img src={filteredData.image} alt="" />
+                <img src={saveCar.image} alt="" />
+                <img src={saveCar.image} alt="" />
               </div>
             </div>
             <div id="product_details_content">
-              <h1>{filteredData.name}</h1>
+              <h1>{saveCar.name}</h1>
 
               <div id="product_details_features">
                 <p>
                   <strong style={{ color: "var(--primary-color)" }}>
                     <span className="material-symbols-outlined">chair</span>
                   </strong>
-                  {filteredData.seater}
+                  {saveCar.seater}
                 </p>
                 <p>
                   <strong style={{ color: "var(--primary-color)" }}>
@@ -56,14 +43,14 @@ const ProductDetails = () => {
                       search_hands_free
                     </span>
                   </strong>
-                  {filteredData.transmission}
+                  {saveCar.transmission}
                 </p>
 
                 <p>
                   <strong style={{ color: "var(--primary-color)" }}>
                     <FontAwesomeIcon icon={faGauge} />{" "}
                   </strong>
-                  {filteredData.mileage}{" "}
+                  {saveCar.mileage}{" "}
                   <sub style={{ fontSize: "1rem", fontStyle: "italic" }}>
                     kmph
                   </sub>
@@ -73,7 +60,7 @@ const ProductDetails = () => {
                   <strong style={{ color: "var(--primary-color)" }}>
                     <FontAwesomeIcon icon={faGasPump} />
                   </strong>
-                  {filteredData.fuel}
+                  {saveCar.fuel}
                 </p>
               </div>
               <div id="product_details_specifications">
@@ -96,7 +83,7 @@ const ProductDetails = () => {
                 >
                   Rent at:
                 </span>{" "}
-                ${filteredData.bookingAmount}/day
+                ${saveCar.bookingAmount}/day
               </div>
 
               <hr />
@@ -107,7 +94,7 @@ const ProductDetails = () => {
                   <p>Available</p>
                 </div>
               </div>
-           
+
               <div id="product_details_buttons">
                 <button>Save to favourites</button>
                 <button onClick={() => navigate("/booking")}>Book Now</button>

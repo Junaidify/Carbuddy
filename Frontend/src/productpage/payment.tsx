@@ -1,9 +1,13 @@
-import {} from "react";
-
 // import styling
 import "../styles/payment.css";
+import { useParams } from "react-router-dom";
+import { useProduct } from "../hooks/useProduct";
 
-const payment = () => {
+const Payment = () => {
+  const { id } = useParams();
+  const saveCar = useProduct(id as string);
+  console.log(saveCar)
+
   return (
     <>
       <section id="payment_section">
@@ -126,7 +130,7 @@ const payment = () => {
               </div>
             </div>
 
-            <button type="submit">Pay</button>
+            <button type="submit">Pay Now{saveCar.bookingAmount} </button>
           </div>
         </form>
       </section>
@@ -134,4 +138,4 @@ const payment = () => {
   );
 };
 
-export default payment;
+export default Payment;

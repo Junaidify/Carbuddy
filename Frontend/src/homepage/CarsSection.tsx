@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 // Import styling
 import "../styles/carsection.css";
-import { CarPropTypes, InitialStatePropTypes } from "../constant/interfaces";
+import { CarPropTypes } from "../constant/interfaces";
 import {
   faChevronLeft,
   faChevronRight,
@@ -13,6 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSaveLater } from "../hooks/useSaveLater";
+import { RootState } from "../utils/store";
 
 const CarsSection = () => {
   const [category, setCategory] = useState<string>("SUV");
@@ -20,7 +21,7 @@ const CarsSection = () => {
 
   // Get the data from the Redux store
   const { isLoading, isError, cars } = useSelector(
-    (state: InitialStatePropTypes) => state.cars
+    (state: RootState) => state.cars
   );
 
   // Ref to the container holding car items

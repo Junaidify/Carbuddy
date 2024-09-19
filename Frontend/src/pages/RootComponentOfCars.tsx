@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 import { useSelector } from "react-redux";
-import { CarPropTypes, InitialStatePropTypes } from "../constant/interfaces";
+import { CarPropTypes } from "../constant/interfaces";
 
 // import styling
 import "../styles/carcategorypage.css";
 import Footer from "../homepage/Footer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { RootState } from "../utils/store";
 
 const RootComponentOfCars = ({ category }: { category: string }) => {
   // called the fetch custom hook and pass the category
   useFetch("http://localhost:3000/cars", category);
   const navigate = useNavigate();
+  const {id} = useParams();
 
   // get the data from the redux store
   const { isLoading, isError, cars } = useSelector(
-    (state: InitialStatePropTypes) => state.cars
+    (state: RootState) => state.cars
   );
 
   // filter the data
@@ -33,7 +35,7 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>
   ) => {
-    const { name, checked, dataset } = e.target;
+    const { name, checked, dataset } = e.target as HTMLInputElement;
     const category = dataset.category as keyof typeof selectedFilters;
 
     setSelectedFilters((prevFilters) => {
@@ -241,10 +243,7 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
         </div>
         <div id="categorised_car_container">
           {filteredData.map((car) => (
-            <div
-              key={car._id}
-              onClick={() => navigate(`/${category}/${car._id}`)}
-            >
+            <div key={car._id}>
               <div className="categorised_car_img_section">
                 <img
                   style={{ width: "100%", height: "100%" }}
@@ -268,8 +267,12 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
                   Starting from ${car.bookingAmount}
                 </p>
                 <div>
-                  <p>Details</p>
-                  <p>Book Now</p>
+                  <p onClick={() => navigate(`/${category}/${car._id}`)}>
+                    Details
+                  </p>
+                  <p onClick={() => navigate(`/booking/${car._id}`)}>
+                    Book Now
+                  </p>
                 </div>
               </div>
             </div>

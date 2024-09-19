@@ -31,4 +31,14 @@ carRouter.get("/cars/:id", async (req, res) => {
   }
 });
 
+carRouter.get("/cars", async (req, res) => {
+  try {
+    const cars = await RentCar.find();
+    console.log(cars);
+    res.status(200).json(cars);
+  } catch (err) {
+    res.status(400).json({ message: "Invalid request" });
+  }
+});
+
 module.exports = carRouter;

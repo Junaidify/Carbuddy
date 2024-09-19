@@ -1,19 +1,20 @@
 import { lazy } from "react";
 import "./App.css";
 import SuvCar from "./pages/SuvCar";
-import { NavLink, Route, Routes, useNavigate } from "react-router-dom";
+import { NavLink, Route,Routes, useNavigate } from "react-router-dom";
 import Convertible from "./pages/Convertible";
 import Sedan from "./pages/Sedan";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faUser } from "@fortawesome/free-solid-svg-icons";
 import logo from "./images/logo.jpeg";
-import Payment from "./productpage/payment";
+import Payment from "./productpage/Payment";
 import Login from "./authentication/Login";
 
 const Homepage = lazy(() => import("./homepage/Homepage"));
 import "./styles/header.css";
 import Offroad from "./pages/Offroad";
 import ProductDetails from "./productpage/ProductDetails";
+import Wishlist from "./pages/Wishlist";
 
 function App() {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ function App() {
             <p onClick={() => navigate("/login")}>
               <FontAwesomeIcon icon={faUser} />
             </p>
-            <p>
+            <p onClick={() => navigate("/wishlist")}>
               <FontAwesomeIcon icon={faHeart} />
             </p>
           </div>
@@ -57,8 +58,9 @@ function App() {
         <Route path="/offroad" element={<Offroad />} />
         <Route path="/sedan" element={<Sedan />} />
         <Route path={`/:category/:id`} element={<ProductDetails />} />
-        <Route path="/booking" element={<Payment />} />
+        <Route path={`/booking/:id`} element={<Payment />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
     </>
   );

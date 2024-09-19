@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useMemo } from "react";
 import { setCars, setError, setLoading } from "../reducers/carsReducer";
 
 export const useFetch = (url: string, category: string): void => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useMemo(() => {
     const getFetch = async () => {
       dispatch(setLoading());
 
@@ -29,5 +29,10 @@ export const useFetch = (url: string, category: string): void => {
       }
     };
     getFetch();
+
+    return () => {
+      getFetch();
+    };
+
   }, [url, category, dispatch]);
 };

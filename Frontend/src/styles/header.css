@@ -94,7 +94,8 @@ nav > div > .navlink:after {
   transition: width 0.5s ease-in-out;
 }
 
-nav > div > .navlink:hover {
+nav > div > .navlink:hover, 
+nav > div > p:hover {
   transform: scale3d(1.2, 1.2, 1.2);
   transition: transform 0.2s ease-in-out;
 }
@@ -139,13 +140,14 @@ nav > .logo_parent > img {
   }
 }
 
-nav > div > p:nth-child(1) {
+nav > div > p {
+  color: var(--secondary-color);
+}
+
+nav > div > p:active{
   color: var(--primary-color);
 }
 
-nav > div > p:nth-child(2) {
-  color: var(--primary-color);
-}
 
 /* -------------- Carousel -------------- */
 

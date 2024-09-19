@@ -1,10 +1,4 @@
 
-export interface InitialStatePropTypes {
-  isLoading: boolean;
-  isError: boolean;
-  cars: any;
-}
-
 export interface CarPropTypes {
   _id: string;
   name: string;
@@ -19,6 +13,24 @@ export interface CarPropTypes {
   seater: number;
 }
 
+
+export interface InitialStatePropTypes {
+  isLoading: boolean;
+  isError: boolean;
+  cars: CarPropTypes[];
+}
+
+export interface WishlistPropTypes {
+  _id: string;
+  carId: string;
+}
+
+
+export interface WishlistInitialState {
+  isLoading: boolean;
+  isError: boolean;
+  wishlist: WishlistPropTypes[]
+}
 
 
 
