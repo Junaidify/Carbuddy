@@ -6,7 +6,7 @@ import { ProductPropTypes } from "../constant/interfaces";
 import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 
-export const Payment = () => {
+const Payment = () => {
   const { id } = useParams();
   const saveCar = useProduct(id as string);
   const [payment, setPayment] = useState<ProductPropTypes>({
@@ -334,3 +334,4 @@ export const Payment = () => {
   );
 };
 
+export default Payment; 
