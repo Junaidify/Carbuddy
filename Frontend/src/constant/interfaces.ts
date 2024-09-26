@@ -8,7 +8,7 @@ export interface CarPropTypes {
   price: number;
   description: string;
   category: string;
-  bookingAmount: string;
+  bookingAmount: number;
   mileage: number;
   seater: number;
 }

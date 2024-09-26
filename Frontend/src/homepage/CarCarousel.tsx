@@ -15,7 +15,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSaveLater } from "../hooks/useSaveLater";
 import { RootState } from "../utils/store";
 
-import logoimg from "../images/carousel_4.jpg";
 
 const CarsSection = () => {
   const [category, setCategory] = useState<string>("SUV");
