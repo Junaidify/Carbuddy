@@ -12,7 +12,7 @@ const Homepage = lazy(() => import("./homepage/Homepage"));
 import Offroad from "./pages/Offroad";
 import ProductDetails from "./productpage/ProductDetails";
 import Wishlist from "./pages/Wishlist";
-import Payment from "./productpage/Payment";
+import Payment from "./pages/Payment";
 
 function App() {
   const navigate = useNavigate();
