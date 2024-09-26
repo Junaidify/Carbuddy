@@ -317,7 +317,7 @@ const Payment = () => {
             </div>
             <div id="total_amount">
               <label htmlFor="otp">Total Amount:</label>
-              <p> ${saveCar.bookingAmount}</p>
+              <p> ${saveCar?.bookingAmount}</p>
             </div>
 
             <button onClick={handleSubmit}>Pay Now</button>

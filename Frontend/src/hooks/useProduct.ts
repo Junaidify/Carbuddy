@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { CarPropTypes } from "../constant/interfaces";
 
 export const useProduct = (id: string) => {
-    const [saveCar, setSaveCar] = useState<CarPropTypes[]>();
+    const [saveCar, setSaveCar] = useState<CarPropTypes>();
 
     useEffect(() => {
         const getFetch = async () => {
