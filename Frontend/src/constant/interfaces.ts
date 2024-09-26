@@ -23,6 +23,9 @@ export interface InitialStatePropTypes {
 export interface WishlistPropTypes {
   _id: string;
   carId: string;
+  image?: string;
+  name?: string;
+  bookingAmount?: string;
 }
 
 

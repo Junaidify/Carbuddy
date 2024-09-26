@@ -113,8 +113,8 @@ const Payment = () => {
   useEffect(() => {
     if (res) {
       const clickOut = document.querySelector(".payment_modal");
-      const handleClick = (e: any) => {
-        if (clickOut && !clickOut.contains(e.target)) {
+      const handleClick = (e: MouseEvent) => {
+        if (clickOut && !clickOut.contains(e.target as Node)) {
           setRes(false);
         }
       };

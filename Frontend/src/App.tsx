@@ -6,7 +6,6 @@ import Convertible from "./pages/Convertible";
 import Sedan from "./pages/Sedan";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faUser } from "@fortawesome/free-solid-svg-icons";
-import logo from "./images/logo.jpeg";
 import Payment from "./productpage/Payment";
 import Login from "./authentication/Login";
 import "./styles/carousel.css";

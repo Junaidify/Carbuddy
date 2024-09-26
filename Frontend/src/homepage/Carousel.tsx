@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 const Carousel = () => {
-  const imgRef = useRef();
+  const imgRef = useRef<HTMLDivElement>();
   const [currentItem, setCurrentItem] = useState<number>(0);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const Carousel = () => {
   return (
     <>
       <main id="carousel">
-        <div className="carousel_img" ref={imgRef}> 
+        <div className="carousel_img" ref={imgRef as React.RefObject<HTMLDivElement>}> 
           <div>
             <img src={carousel_1} alt="" />
           </div>
