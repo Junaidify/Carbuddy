@@ -1,72 +1,75 @@
 import { useEffect, useRef, useState } from "react";
+import "../styles/carousel.css";
 
-// images will be added here
-import car_1 from "../images/carousel_1.jpg";
-import car_2 from "../images/carousel_1.webp";
-import car_3 from "../images/carousel_3.jpg";
-import car_4 from "../images/carousel_4.jpg";
-import car_5 from "../images/carousel_5.jpg";
-
-// import styling
-import "../styles/header.css";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import carousel_1 from "../images/carousel_1.jpg";
+import carousel_2 from "../images/carousel_2.jpg";
+import carousel_3 from "../images/carousel_3.jpg";
+import carousel_4 from "../images/carousel_4.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 const Carousel = () => {
-  const images = [car_1, car_2, car_3, car_4, car_5];
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const [index, setIndex] = useState<number>(0);
+  const imgRef = useRef();
+  const [currentItem, setCurrentItem] = useState<number>(0);
 
   useEffect(() => {
-    if (carouselRef.current) {
-      const width = (
-        carouselRef.current.children[0] as HTMLElement
-      ).getBoundingClientRect().width;
-      carouselRef.current.style.transform = `translateX(-${width * index}px)`;
-      carouselRef.current.style.transition = "transform 0.5s ease-in-out";
+    if (imgRef) {
+      const currentWidth = (
+        imgRef.current as unknown as HTMLDivElement
+      ).children[0].getBoundingClientRect().width;
+      (
+        imgRef.current as unknown as HTMLDivElement
+      ).style.transform = `translateX(-${currentWidth * currentItem}px)`;
+      (imgRef.current as unknown as HTMLDivElement).style.transition =
+        "transform 0.5s linear";
     }
-  }, [index]);
+  }, [currentItem]);
 
-  const moveToNext = () => {
-    if (index < (carouselRef.current?.children as HTMLCollection).length - 1) {
-      setIndex((prev) => prev + 1);
-    }
+  const movePrev = () => {
+    setCurrentItem((prev) => (prev > 0 ? prev - 1 : prev));
   };
 
+  const moveNext = () => {
+    setCurrentItem((prev) =>
+      prev < (imgRef.current as unknown as HTMLDivElement).children.length - 1
+        ? prev + 1
+        : prev
+    );
+  };
   return (
-    <header id="carousel_wrapper">
-      <div id="image_container" ref={carouselRef}>
-        {images.map((image, i) => (
-          <div key={i} className="image">
-            <img
-              style={{ width: "100%", height: "100%", aspectRatio: "16/9 " }}
-              src={image}
-              alt=""
-            />
+    <>
+      <main id="carousel">
+        <div className="carousel_img" ref={imgRef}> 
+          <div>
+            <img src={carousel_1} alt="" />
           </div>
-        ))}
-      </div>
-      <div id="button">
-        <button
-          style={
-            index === 0 ? { visibility: "hidden" } : { visibility: "visible" }
-          }
-          onClick={() => setIndex((prev) => prev - 1)}
-        >
-          <FontAwesomeIcon icon={faAngleLeft} />
-        </button>
-        <button
-          style={
-            index === images.length - 1
-              ? { visibility: "hidden" }
-              : { visibility: "visible" }
-          }
-          onClick={moveToNext}
-        >
-          <FontAwesomeIcon icon={faAngleRight} />
-        </button>
-      </div>
-    </header>
+          <div>
+            <img src={carousel_2} alt="" />
+          </div>
+          <div>
+            <img src={carousel_3} alt="" />
+          </div>
+          <div>
+            <img src={carousel_4} alt="" />
+          </div>
+        </div>
+
+        <div id="carousel_move_btn">
+          <button onClick={movePrev}><FontAwesomeIcon icon={faAngleLeft} /></button>
+          <button onClick={moveNext}><FontAwesomeIcon icon={faAngleRight} /></button>
+        </div>
+
+        <div id="carousel_content">
+          <h1>Rent Luxury At</h1>
+          <h2>Affortable Price</h2>
+          <p>
+             Offering seamless booking, and flexible
+            rental options, CarBuddy ensures a hassle-free experience.{" "}
+          </p>
+          <button>Open Fleet</button>
+        </div>
+      </main>
+    </>
   );
 };
 

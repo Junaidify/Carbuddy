@@ -13,7 +13,8 @@ body {
 :root {
   --primary-color: #df2434;
   --secondary-color: #143846;
-  --tertairy-color: #9e0771;
   --heading-size: 3rem;
   --button-color : #2e8b57; 
+  --whitesmoke-color: whitesmoke;
+  --white-color: white;
 }

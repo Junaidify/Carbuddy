@@ -9,10 +9,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback } from "react";
 import axios from "axios";
 import { setWishlist } from "../reducers/wishlistReducer";
+import { useNavigate } from "react-router-dom";
 
 const Wishlist = () => {
   useFetch("http://localhost:3000/cars", "");
   useWishlist();
+  const navigate = useNavigate();
 
   const { isLoading, isError, wishlist } = useSelector(
     (state: RootState) => state.wishlist
@@ -45,31 +47,45 @@ const Wishlist = () => {
     <div id="wishlist">
       <h1>Wishlist</h1>
       <div id="wishlist_container">
-        { wishlist.length > 0 ? wishlist.map((car) => (
-          <div className="car" key={car._id}>
-            <div>
-              <img
-                style={{ width: "100%", height: "100%", aspectRatio: "3 / 2" }}
-                src={car.image}
-                alt=""
-              />
-            </div>
-            <div>
-              <p>{car.name}</p>
-              <p>
-                ${car.bookingAmount} /{" "}
-                <span style={{ fontSize: "1.2rem" }}> 12 hours</span>
-              </p>
-            </div>
-
-            <button
-              className="wishlist_btn"
-              onClick={() => handleSaveLater(car._id)}
+        {wishlist.length > 0 ? (
+          wishlist.map((car) => (
+            <div
+              className="car"
+              key={car._id}
+              onClick={() => navigate(`/product/${car._id}`)}
             >
-              <FontAwesomeIcon icon={faHeart} />
-            </button>
+              <div>
+                <img
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    aspectRatio: "3 / 2",
+                  }}
+                  src={car.image}
+                  alt=""
+                />
+              </div>
+              <div>
+                <p>{car.name}</p>
+                <p>
+                  ${car.bookingAmount} /{" "}
+                  <span style={{ fontSize: "1.2rem" }}> 12 hours</span>
+                </p>
+              </div>
+
+              <button
+                className="wishlist_btn"
+                onClick={() => handleSaveLater(car._id)}
+              >
+                <FontAwesomeIcon icon={faHeart} />
+              </button>
+            </div>
+          ))
+        ) : (
+          <div className="no_wishlist">
+            <FontAwesomeIcon icon={faXmark} />
           </div>
-        )) : <div className="no_wishlist"><FontAwesomeIcon icon={faXmark} /></div> }
+        )}
       </div>
     </div>
   );

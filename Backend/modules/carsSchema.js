@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose
-  .connect("mongodb://localhost:27017/rentWheels")
+  .connect("mongodb+srv://junaidkhan23785:TosFkZwhMJo6uWsb@carbuddy.vasfi.mongodb.net/carbuddy?retryWrites=true&w=majority")
   .then(() => console.log("Mongodb Connected"))
   .catch((err) => console.log("MongoDB isn't connected " + err));
 

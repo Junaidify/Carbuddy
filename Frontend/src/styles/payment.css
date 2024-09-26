@@ -1,9 +1,9 @@
 #payment_section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
- 
   width: 80%;
   margin: 5dvh auto 0;
+  position: relative;
 }
 
 #payment_section > form {
@@ -101,7 +101,7 @@
   border: none;
 }
 
-#payment_gateway > h2{
+#payment_gateway > h2 {
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--primary-color);
@@ -140,16 +140,15 @@
   background-image: url("../images/social_media_2.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  
 }
 
-#card_details > .card_number{
+#card_details > .card_number {
   display: flex;
   flex-direction: column;
   row-gap: 1.5dvh;
 }
 
-#card_details  label{
+#card_details label {
   color: var(--tertairy-color);
   font-weight: bolder;
 }
@@ -167,45 +166,58 @@
   align-items: center;
 }
 
-#card_details > .card_expiry_cvv > div > input{
+#card_details > .card_expiry_cvv > div > input {
   width: 50%;
 }
 
 /* ----------------- Payment Section ---------------- */
 
-#card_otp {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1.5dvh;
-}
-
-#card_otp > div {
+#total_amount {
   display: flex;
   flex-direction: row;
-  column-gap: 1.5dvh;
+  column-gap: 0.5dvw;
+  margin: 2dvh 0;
 }
 
-#card_otp > label {
+#total_amount > label {
   font-size: 1.3rem;
   color: var(--primary-color);
   font-weight: bolder;
 }
 
-#card_otp > div > input {
-  width: 10%;
-  text-align: center;
-  padding: 1dvh 1dvw;
-  border: 1px solid var(--primary-color);
+#total_amount > p {
   font-size: 1.5rem;
+  font-weight: bolder;
 }
 
 #payment_section button {
   border-radius: 0.5rem;
   padding: 1dvh 1dvw;
-  background: var(--another-color);
+  background: var(--primary-color);
   font-size: 1.5rem;
   border: none;
-  color: var(--white-color);
+  color: white;
   font-weight: bolder;
   margin-top: 1dvh;
+}
+
+/* ----------------- Modal ---------------- */
+
+.payment_modal {
+  position: fixed;
+  z-index: 1;
+  left: 40%;
+  top: 35%;
+  width: 15%;
+  height: 10%;
+  overflow: auto;
+  color: red;
+  background-color: #fefefe;
+  box-shadow: 0 0 10px 0 var(--tertairy-color);
+  border-radius: 0.5rem;
+  padding: 1dvh 1dvw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
 }

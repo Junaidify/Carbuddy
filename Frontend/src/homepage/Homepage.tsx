@@ -2,12 +2,14 @@ import { lazy, Suspense } from "react";
 
 // Importing dashboard components
 const Carousel = lazy(() => import("../homepage/Carousel"));
-const CarsSection = lazy(() => import("../homepage/CarsSection"));
-const OffRoadAndKnowMore = lazy(() => import("../homepage/OffRoadAndKnowMore"));
+const CarsCarousel = lazy(() => import("./CarCarousel"));
+const OffRoadAndKnowMore = lazy(() => import("./OnlyForToday"));
 const Footer = lazy(() => import("../homepage/Footer"));
 
 // Importing styling
 import "../styles/homepage.css";
+import Services from "./Services";
+import WhyChooseUs from "./WhyChooseUs";
 
 const Homepage = () => {
   return (
@@ -16,7 +18,14 @@ const Homepage = () => {
         <Carousel />
       </Suspense>
       <Suspense fallback={<div>Loading...</div>}>
-        <CarsSection />
+        <Services />
+      </Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
+        <CarsCarousel />
+      </Suspense>
+
+      <Suspense fallback={<div>Loading...</div>}>
+        <WhyChooseUs />
       </Suspense>
       <Suspense fallback={<div>Loading...</div>}>
         <OffRoadAndKnowMore />

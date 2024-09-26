@@ -6,11 +6,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGasPump, faGauge } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../homepage/Footer";
 import { useProduct } from "../hooks/useProduct";
+import { useSaveLater } from "../hooks/useSaveLater";
 
 const ProductDetails = () => {
   const { id, category } = useParams();
- const saveCar = useProduct(id as string); 
+  const saveCar = useProduct(id as string);
   const navigate = useNavigate();
+  const { handleSaveLater } = useSaveLater();
 
   console.log(saveCar);
 
@@ -32,13 +34,13 @@ const ProductDetails = () => {
 
               <div id="product_details_features">
                 <p>
-                  <strong style={{ color: "var(--primary-color)" }}>
+                  <strong style={{ color: "var(--button-color)" }}>
                     <span className="material-symbols-outlined">chair</span>
                   </strong>
                   {saveCar.seater}
                 </p>
                 <p>
-                  <strong style={{ color: "var(--primary-color)" }}>
+                  <strong style={{ color: "var(--button-color)" }}>
                     <span className="material-symbols-outlined">
                       search_hands_free
                     </span>
@@ -47,7 +49,7 @@ const ProductDetails = () => {
                 </p>
 
                 <p>
-                  <strong style={{ color: "var(--primary-color)" }}>
+                  <strong style={{ color: "var(--button-color)" }}>
                     <FontAwesomeIcon icon={faGauge} />{" "}
                   </strong>
                   {saveCar.mileage}{" "}
@@ -57,7 +59,7 @@ const ProductDetails = () => {
                 </p>
 
                 <p>
-                  <strong style={{ color: "var(--primary-color)" }}>
+                  <strong style={{ color: "var(--button-color)" }}>
                     <FontAwesomeIcon icon={faGasPump} />
                   </strong>
                   {saveCar.fuel}
@@ -78,7 +80,7 @@ const ProductDetails = () => {
                 <span
                   style={{
                     fontSize: "1.3rem",
-                    color: "var(--tertairy-color)",
+                    color: "var(--primary-color)",
                   }}
                 >
                   Rent at:
@@ -96,8 +98,12 @@ const ProductDetails = () => {
               </div>
 
               <div id="product_details_buttons">
-                <button>Save to favourites</button>
-                <button onClick={() => navigate("/booking")}>Book Now</button>
+                <button onClick={() => handleSaveLater(id as string)}>
+                  Save to favourites
+                </button>
+                <button onClick={() => navigate(`/booking/${id}`)}>
+                  Book Now
+                </button>
               </div>
               <hr />
               <div id="product_details_specifications">

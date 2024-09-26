@@ -1,0 +1,256 @@
+#car_carousel_container {
+  width: 80%;
+  height: 100%;
+  margin: 10dvh auto 0;
+}
+
+#car_carousel_container > h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin: 7dvh 0 5dvh;
+  text-align: center;
+}
+
+#car_carousel_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 3dvh;
+  width: 40%;
+  margin-left: 2dvw;
+}
+
+#car_carousel_buttons > button {
+  color: var(--white-color);
+  border: none;
+  background-color: var(--primary-color);
+  padding: 1dvh 1dvw;
+  font-size: 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  position: relative;
+  text-align: center;
+  transform: perspective(16px) rotateY(2deg);
+}
+
+#car_carousel_buttons > button:hover {
+  transform: scale3d(1.1, 1.1, 1.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+#car_carousel_img_container {
+  position: relative;
+  overflow: hidden;
+}
+
+#toprated_cars {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: 40%;
+  height: 40dvh;
+  transform: perspective(20px) rotateY(10deg);
+  position: relative;
+}
+
+.cars_card {
+  width: 90%;
+  height: 300px;
+  box-shadow: 0 0 15px 0 var(--tertairy-color);
+  border-radius: 15px;
+  padding: 1dvh 0 3dvh;
+}
+
+.car_carousel_img {
+  width: 300px;
+  height: 250px;
+}
+
+.car_carousel_img > img {
+  border-radius: 10px;
+}
+
+/*------------- card's content ---------------*/
+
+.car_carousel_details {
+  position: absolute;
+  bottom: 3dvh;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 10px 0 var(--tertairy-color);
+  width: 100%;
+  background-color: whitesmoke;
+  border-radius: 15px;
+}
+
+.car_carousel_details > h2 {
+  font-size: 1.5rem;
+  padding: 1dvh 0.5dvw;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.car_carousel_details > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  column-gap: 0.5dvw;
+  padding: 0.5dvh 0.5dvw;
+  width: 100%;
+}
+
+.car_carousel_details > div > p {
+  display: flex;
+  align-items: center;
+  column-gap: 0.2dvw;
+  background-color: var(--whitesmoke-color);
+}
+
+/*------------- Button to save for later ---------------*/
+
+.car_carousel_wishlist_btn {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  border: none;
+  font-size: 1.5rem;
+  background-color: transparent;
+  padding: 0.5dvh;
+  color: var(--primary-color);
+}
+
+/*------------- Button to Slide ---------------*/
+
+.move_car_btn_parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1dvw;
+}
+
+.move_car_btn_parent > button {
+  font-size: 1.5rem;
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  padding: 0.7dvh 1dvw;
+  border: none;
+  border-radius: 10px;
+}
+
+.move_car_btn_parent > button:active {
+  background: var(--white-color);
+}
+
+/* ------------- Media Queries --------------- */
+
+@media screen and (max-width: 430px) {
+  #car_carousel_container > h1 {
+    font-size: 2rem;
+    margin: 5dvh 0 3dvh;
+  }
+
+  #car_carousel_buttons {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  #car_carousel_buttons > button {
+    padding: 1dvh 1dvw;
+    font-size: 0.6rem;
+  }
+
+  #toprated_cars {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 0%;
+    height: 30dvh;
+  }
+
+  .cars_card {
+    width: 60%;
+    height: 200px;
+    padding: 1dvh 0 0dvh;
+  }
+
+  .car_carousel_img {
+    width: 300px;
+    height: 250px;
+  }
+
+  .car_carousel_details {
+    display: none;
+  }
+
+  .move_car_btn_parent {
+    margin-top: 8dvh;
+  }
+
+  .car_carousel_wishlist_btn {
+    top: 5%;
+    left: -25dvw;
+    font-size: 1.5rem;
+    background-color: transparent;
+    padding: 0.5dvh;
+  }
+}
+
+@media screen and (min-width: 431px) and (max-width: 1024px) {
+  #car_carousel_container > h1 {
+    font-size: 2rem;
+    margin: 5dvh 0 3dvh;
+  }
+
+  #car_carousel_buttons {
+    flex-wrap: wrap;
+    width: 60%;
+  }
+
+  #car_carousel_buttons > button {
+    padding: 1dvh 1dvw;
+    font-size: 0.6rem;
+  }
+
+  #toprated_cars {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 25%;
+    height: 30dvh;
+  }
+
+  .cars_card {
+    width: 60%;
+    height: 200px;
+    padding: 1dvh 0 0dvh;
+  }
+
+  .car_carousel_img {
+    width: 300px;
+    height: 250px;
+  }
+
+  .car_carousel_details {
+    display: none;
+  }
+
+  .move_car_btn_parent {
+    margin-top: 8dvh;
+  }
+
+  .car_carousel_wishlist_btn {
+    top: 5%;
+    left: -25dvw;
+    font-size: 1.5rem;
+    background-color: transparent;
+    padding: 0.5dvh;
+  }
+}

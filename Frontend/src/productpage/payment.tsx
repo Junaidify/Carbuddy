@@ -2,11 +2,132 @@
 import "../styles/payment.css";
 import { useParams } from "react-router-dom";
 import { useProduct } from "../hooks/useProduct";
+import { ProductPropTypes } from "../constant/interfaces";
+import React, { useCallback, useEffect, useState } from "react";
+import axios from "axios";
 
 const Payment = () => {
   const { id } = useParams();
   const saveCar = useProduct(id as string);
-  console.log(saveCar)
+  const [payment, setPayment] = useState<ProductPropTypes>({
+    name: "",
+    email: "",
+    phone: "",
+    house: "",
+    street: "",
+    city: "",
+    pincode: "",
+    state: "",
+    customer_name: "",
+    card_number: "",
+    expiry_date: "",
+    cvv: "",
+  });
+  const [res, setRes] = useState<boolean>(false);
+
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
+
+      const phoneReg = /^\d{10}$/;
+      const cardReg = /^\d{16}$/;
+      const cvvReg = /^\d{3}$/;
+      const pincodeReg = /^\d{6}$/;
+      const expiryReg = /^\d{2}\/\d{2}$/;
+
+      if (payment.name.trim() == "") {
+        return alert("Name cannot be empty");
+      }
+
+      if (
+        payment.email.trim() == "" ||
+        payment.email.includes("/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/")
+      )
+        return alert("Invalid Email");
+
+      if (payment.phone.trim() == "" || !payment.phone.match(phoneReg))
+        return alert("Invalid Phone Number");
+
+      if (payment.house.trim() == "") return alert("Invalid House Number");
+      if (payment.street.trim() == "") return alert("Invalid Street Name");
+      if (payment.city.trim() == "") return alert("City cannot be empty");
+      if (payment.pincode.trim() == "" || !payment.pincode.match(pincodeReg))
+        return alert("Pincode cannot be empty");
+      if (payment.state.trim() == "") return alert("State cannot be empty");
+      if (payment.customer_name.trim() == "")
+        return alert("Customer name cannot be empty");
+
+      if (
+        payment.card_number.trim() == "" ||
+        !payment.card_number.match(cardReg)
+      )
+        return alert("Card number cannot be empty");
+
+      if (
+        payment.expiry_date.trim() == "" ||
+        !payment.expiry_date.match(expiryReg)
+      )
+        return alert("Expiry date cannot be empty");
+
+      if (payment.cvv.trim() == "" || !payment.cvv.match(cvvReg))
+        return alert("CVV cannot be empty");
+
+      try {
+        const res = await axios.post("http://localhost:3000/payment", payment);
+        if (res.status === 201) {
+          setRes(true);
+          setPayment({
+            name: "",
+            email: "",
+            phone: "",
+            house: "",
+            street: "",
+            city: "",
+            pincode: "",
+            state: "",
+            customer_name: "",
+            card_number: "",
+            expiry_date: "",
+            cvv: "",
+          });
+        } else {
+          console.log("Invalid request in PaymentPage");
+        }
+      } catch (err) {
+        console.log("Error in PaymentPage", err);
+      }
+    },
+    []
+  );
+
+  const handleChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+
+    setPayment((prev) => ({ ...prev, [name]: value }));
+  };
+
+  useEffect(() => {
+    if (res) {
+      const clickOut = document.querySelector(".payment_modal");
+      const handleClick = (e: any) => {
+        if (clickOut && !clickOut.contains(e.target)) {
+          setRes(false);
+        }
+      };
+
+      document.addEventListener("click", handleClick);
+
+      return () => {
+        document.removeEventListener("click", handleClick);
+      };
+    }
+  }, [res]);
+
+  console.log(saveCar);
 
   return (
     <>
@@ -16,17 +137,39 @@ const Payment = () => {
           <div className="personal_details">
             <div className="name">
               <label htmlFor="name">Name</label>
-              <input placeholder="John Doe" type="text" id="name" />
+              <input
+                placeholder="John Doe"
+                type="text"
+                id="name"
+                name="name"
+                onChange={handleChange}
+                value={payment.name}
+              />
             </div>
 
             <div className="email">
               <label htmlFor="email">Email</label>
-              <input placeholder="abc@example.com" type="email" id="email" />
+              <input
+                placeholder="abc@example.com"
+                type="email"
+                id="email"
+                name="email"
+                value={payment.email}
+                onChange={handleChange}
+              />
             </div>
 
             <div className="phone">
               <label htmlFor="phone">Phone</label>
-              <input placeholder="1234567890" type="text" id="phone" />
+              <input
+                placeholder="1234567890"
+                type="text"
+                id="phone"
+                name="phone"
+                maxLength={10}
+                value={payment.phone}
+                onChange={handleChange}
+              />
             </div>
           </div>
 
@@ -39,27 +182,58 @@ const Payment = () => {
                   placeholder="123"
                   type="text"
                   id="House No. / Flat No."
-                ></input>
+                  name="house"
+                  maxLength={4}
+                  value={payment.house}
+                  onChange={handleChange}
+                />
               </div>
               <div className="street">
                 <label htmlFor="Street">Street/ Landmark</label>
-                <input placeholder="Street" type="text" id="Street"></input>
+                <input
+                  placeholder="Street"
+                  type="text"
+                  id="Street"
+                  name="street"
+                  value={payment.street}
+                  onChange={handleChange}
+                />
               </div>
             </div>
             <div>
               <div className="city">
                 <label htmlFor="City">City / Town</label>
-                <input placeholder="City" type="text" id="City"></input>
+                <input
+                  placeholder="City"
+                  type="text"
+                  id="City"
+                  name="city"
+                  value={payment.city}
+                  onChange={handleChange}
+                />
               </div>
 
               <div className="pincode">
                 <label htmlFor="Pincode">Pincode</label>
-                <input placeholder="Pincode" type="text" id="Pincode"></input>
+                <input
+                  placeholder="Pincode"
+                  type="text"
+                  id="Pincode"
+                  name="pincode"
+                  maxLength={6}
+                  value={payment.pincode}
+                  onChange={handleChange}
+                />
               </div>
 
               <div className="state">
                 <label htmlFor="State">State</label>
-                <select name="State" id="State">
+                <select
+                  name="state"
+                  id="State"
+                  value={payment.state}
+                  onChange={handleChange}
+                >
                   <option value="select">
                     ---------- Select your city ----------
                   </option>
@@ -94,7 +268,13 @@ const Payment = () => {
             </div>
             <div className="customer_name">
               <label htmlFor="customer_name">Customer Name</label>
-              <input placeholder="John Doe" type="text" id="customer_name" />
+              <input
+                placeholder="John Doe"
+                type="text"
+                id="customer_name"
+                name="customer_name"
+                onChange={handleChange}
+              />
             </div>
 
             <h2>Card Details</h2>
@@ -105,34 +285,50 @@ const Payment = () => {
                   type="text"
                   maxLength={19}
                   placeholder="1234-1234-1234-1234"
+                  id="card_number"
+                  name="card_number"
+                  onChange={handleChange}
                 />
               </div>
               <div className="card_expiry_cvv">
                 <div>
                   <label htmlFor="expiry">Expiry</label>
-                  <input type="text" maxLength={5} placeholder="MM/YY" />
+                  <input
+                    type="text"
+                    maxLength={5}
+                    placeholder="MM/YY"
+                    id="expiry"
+                    name="expiry_date"
+                    onChange={handleChange}
+                  />
                 </div>
                 <div>
                   <label htmlFor="cvv">CVV</label>
-                  <input type="text" maxLength={3} placeholder="123" />
+                  <input
+                    type="text"
+                    maxLength={3}
+                    placeholder="123"
+                    id="cvv"
+                    name="cvv"
+                    onChange={handleChange}
+                  />
                 </div>
               </div>
             </div>
-            <div id="card_otp">
-              <label htmlFor="otp">OTP</label>
-              <div>
-                <input type="text" maxLength={1} placeholder="0" />
-                <input type="text" maxLength={1} placeholder="0" />
-                <input type="text" maxLength={1} placeholder="0" />
-                <input type="text" maxLength={1} placeholder="0" />
-                <input type="text" maxLength={1} placeholder="0" />
-                <input type="text" maxLength={1} placeholder="0" />
-              </div>
+            <div id="total_amount">
+              <label htmlFor="otp">Total Amount:</label>
+              <p> ${saveCar.bookingAmount}</p>
             </div>
 
-            <button type="submit">Pay Now{saveCar.bookingAmount} </button>
+            <button onClick={handleSubmit}>Pay Now</button>
           </div>
         </form>
+
+        {res && (
+          <div className="payment_modal">
+            <p>Order Place</p>
+          </div>
+        )}
       </section>
     </>
   );

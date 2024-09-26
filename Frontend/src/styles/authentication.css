@@ -113,7 +113,7 @@
 #signUp > div > div:nth-last-child(1) > button,
 #login > div > div:nth-last-child(1) > button {
   background-color: var(--primary-color);
-  color: var(--white-color);
+  color: white;
   width: 60%;
   border: none;
   font-size: 1.2rem;
@@ -154,4 +154,48 @@
 
 #login_signup {
   transition: background 0.5s ease-in-out;
+}
+
+#login::before {
+  position: absolute;
+  top: 15dvh;
+  left: 3dvw;
+  content: "Welcome\n Back";
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  white-space: pre-line;
+}
+
+#login::after {
+  position: absolute;
+  top: 25dvh;
+  left: 3dvw;
+  content: "CARBUDDY  :)";
+  font-weight: bold;
+  color: white;
+  font-size: 2rem;
+  white-space: pre-line;
+}
+
+#signUp::before {
+  position: absolute;
+  top: 15dvh;
+  right: 3dvw;
+  content: "Welcome\n Back";
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  white-space: pre-line;
+}
+
+#signUp::after {
+  position: absolute;
+  top: 25dvh;
+  right: 3dvw;
+  content: "(: CARBUDDY";
+  font-weight: bold;
+  color: white;
+  font-size: 2rem;
+  white-space: pre-line;
 }

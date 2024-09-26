@@ -33,4 +33,30 @@ export interface WishlistInitialState {
 }
 
 
+export interface ProductPropTypes {
+  name: string;
+  email: string;
+  phone: string;
+  house: string;
+  street: string;
+  city: string;
+  pincode: string;
+  state: string;
+  customer_name: string;
+  card_number: string;
+  expiry_date: string;
+  cvv: string;
+}
 
+
+export interface LoginPropTypes {
+  user_email: string;
+  user_password: string;
+}
+
+export interface RegisterPropTypes {
+  name: string;
+  email: string;
+  phone: string;
+  password: string;
+}

@@ -1,11 +1,11 @@
 import axios from "axios";
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { CarPropTypes } from "../constant/interfaces";
 
 export const useProduct = (id: string) => {
     const [saveCar, setSaveCar] = useState<CarPropTypes[]>([]);
 
-    useMemo(() => {
+    useEffect(() => {
         const getFetch = async () => {
             try {
                 const res = await axios.get(`http://localhost:3000/cars/${id}`);
@@ -19,10 +19,6 @@ export const useProduct = (id: string) => {
             }
         };
         getFetch();
-
-        return () => {
-            getFetch();
-        };
 
     }, [id]);
 
