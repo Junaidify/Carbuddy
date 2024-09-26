@@ -6,13 +6,13 @@ import Convertible from "./pages/Convertible";
 import Sedan from "./pages/Sedan";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faUser } from "@fortawesome/free-solid-svg-icons";
-import Payment from "./productpage/Payment";
 import Login from "./authentication/Login";
 import "./styles/carousel.css";
 const Homepage = lazy(() => import("./homepage/Homepage"));
 import Offroad from "./pages/Offroad";
 import ProductDetails from "./productpage/ProductDetails";
 import Wishlist from "./pages/Wishlist";
+import Payment from "./productpage/Payment";
 
 function App() {
   const navigate = useNavigate();

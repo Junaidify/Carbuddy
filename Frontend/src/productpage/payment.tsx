@@ -97,7 +97,7 @@ const Payment = () => {
         console.log("Error in PaymentPage", err);
       }
     },
-    []
+    [payment]
   );
 
   const handleChange = (
