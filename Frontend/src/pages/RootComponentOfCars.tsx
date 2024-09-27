@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 import { useSelector } from "react-redux";
 import { CarPropTypes } from "../constant/interfaces";
-
+import logo from "../images/carousel_4.jpg";
 // import styling
 import "../styles/carcategorypage.css";
 import Footer from "../homepage/Footer";
@@ -85,13 +85,62 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
 
   return (
     <>
-      <div id="carcategorypage">
-        <div id="categorised_car_filter_container">
+      <div id="car_category_container">
+        <div id="car_filter">
           <h2>Filter By</h2>
-          <div id="categorised_car_filter">
-            <div>
+          <div id="car_filter_content">
+            <div className="car_filter_content_box">
+              <h3>Fuel</h3>
+              <div className="car_filter_checkbox">
+                <div>
+                  <input
+                    type="checkbox"
+                    name="diesel"
+                    data-category="fuel"
+                    onChange={handleChecked}
+                  />
+                  <label htmlFor="diesel">Diesel</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="petrol"
+                    data-category="fuel"
+                    onChange={handleChecked}
+                  />
+                  <label htmlFor="petrol">Petrol</label>
+                </div>
+              </div>
+            </div>
+
+            <div className="car_filter_content_box">
+              <h3>Transmission</h3>
+              <div className="car_filter_checkbox">
+                <div>
+                  <input
+                    type="checkbox"
+                    id="manual"
+                    data-category="transmission"
+                    name="manual"
+                    onChange={handleChecked}
+                  />
+                  <label htmlFor="manual">Manual</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="automatic"
+                    data-category="transmission"
+                    onChange={handleChecked}
+                  />
+                  <label htmlFor="automatic">Automatic</label>
+                </div>
+              </div>
+            </div>
+
+            <div className="car_filter_content_box">
               <h3>Brand</h3>
-              <div>
+              <div className="car_filter_checkbox">
                 <div>
                   <input
                     type="checkbox"
@@ -157,57 +206,10 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
                 </div>
               </div>
             </div>
-            <div>
-              <h3>Transmission</h3>
-              <div>
-                <div>
-                  <input
-                    type="checkbox"
-                    id="manual"
-                    data-category="transmission"
-                    name="manual"
-                    onChange={handleChecked}
-                  />
-                  <label htmlFor="manual">Manual</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    name="automatic"
-                    data-category="transmission"
-                    onChange={handleChecked}
-                  />
-                  <label htmlFor="automatic">Automatic</label>
-                </div>
-              </div>
-            </div>
-            <div>
-              <h3>Fuel</h3>
-              <div>
-                <div>
-                  <input
-                    type="checkbox"
-                    name="diesel"
-                    data-category="fuel"
-                    onChange={handleChecked}
-                  />
-                  <label htmlFor="diesel">Diesel</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    name="petrol"
-                    data-category="fuel"
-                    onChange={handleChecked}
-                  />
-                  <label htmlFor="petrol">Petrol</label>
-                </div>
-              </div>
-            </div>
 
-            <div>
+            <div className="car_filter_content_box">
               <h3>Price</h3>
-              <div>
+              <div className="car_filter_checkbox">
                 <div>
                   <input
                     type="checkbox"
@@ -239,39 +241,33 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
             </div>
           </div>
         </div>
-        <div id="categorised_car_container">
+        <div id="car_category">
           {filteredData.map((car) => (
-            <div key={car._id}>
-              <div className="categorised_car_img_section">
+            <div key={car._id} className="single_car">
+              <div className="car_category_img">
                 <img
                   style={{ width: "100%", height: "100%" }}
-                  src={car.image}
+                  src={logo}
                   alt=""
                 />
               </div>
-              <div className="categorised_car_section_features">
-                <p>{car.name}</p>
-                <div className="categorised_car_car_features">
-                  <p>{car.seater} seater</p>
-                  <p>
-                    <span className="material-symbols-outlined">
-                      search_hands_free
-                    </span>
-                    {car.transmission}
-                  </p>
-                  <p>{car.mileage}kmph</p>
-                </div>
-                <p className="categorised_car_car_price">
-                  Starting from ${car.bookingAmount}
-                </p>
-                <div>
-                  <p onClick={() => navigate(`/${category}/${car._id}`)}>
-                    Details
-                  </p>
-                  <p onClick={() => navigate(`/booking/${car._id}`)}>
-                    Book Now
-                  </p>
-                </div>
+
+              <div className="car_category_content">
+              
+                <h3>{car.name}</h3>
+                <h2>
+                  <span>Starting from </span>
+                  ${car.bookingAmount}
+                </h2>
+              </div>
+
+              <div className="car_category_button">
+                <button onClick={() => navigate(`/${category}/${car._id}`)}>
+                  Details
+                </button>
+                <button onClick={() => navigate(`/booking/${car._id}`)}>
+                  Book Now
+                </button>
               </div>
             </div>
           ))}

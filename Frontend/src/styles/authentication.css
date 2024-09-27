@@ -3,30 +3,32 @@
   height: 93dvh;
   margin: auto;
   position: relative;
+  background: url("../images/login.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 #login_signup {
   position: absolute;
   top: 0;
-  left: 0;
-  transform: translate(35%, 7%);
-  background-color: red;
+  left: 35%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   height: 60dvh;
-  width: 60%;
+  width: 30%;
   margin: 5% auto 0;
-  box-shadow: 0 0 10px 0 var(--tertairy-color);
+  background-color: rgba(255, 255, 255, 0.062);
+  backdrop-filter: blur(10px);
   border-radius: 0.5dvw;
 }
 
 #signUp > h1,
 #login > h1 {
+  color: var(--primary-color);
   text-align: center;
   font-size: 2rem;
-  font-weight: bold;
   margin: 3dvh 0;
-  color: var(--primary-color);
 }
 
 #signUp {
@@ -52,11 +54,10 @@
 #signUp > div > div > label,
 #login > div > div > label {
   font-size: 1.2rem;
-  font-weight: bold;
   position: absolute;
   top: 1dvh;
   left: 0.5dvw;
-  color: var(--secondary-color);
+  color: white;
   transition: top 0.3s ease-in-out;
 }
 
@@ -65,7 +66,7 @@
   position: absolute;
   top: 1.5dvh;
   right: 1dvw;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   transition: top 0.3s ease-in-out;
   font-size: 1.2rem;
   border: none;
@@ -75,11 +76,12 @@
 
 #signUp > div > div > input,
 #login > div > div > input {
-  border: 1px solid var(--primary-color);
   width: 95%;
   padding: 1dvh 0.5dvw;
   margin-top: 1dvh;
   border-bottom: 1px solid var(--primary-color);
+  background-color: transparent;
+  color: wheat;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -117,7 +119,6 @@
   width: 60%;
   border: none;
   font-size: 1.2rem;
-  font-weight: bold;
   padding: 1dvh 3dvw;
   margin: 0 auto;
   border-radius: 0.5dvw;
@@ -126,10 +127,10 @@
 
 #signUp > div > div:nth-last-child(1) > div > button,
 #login > div > div:nth-last-child(1) > div > button {
-  font-weight: bold;
-  color: var(--secondary-color);
+  color: var(--white-color);
   background: none;
   padding: 0.2dvh 0.5dvw;
+  border: 1px solid var(--primary-color);
   border-radius: 5px;
   cursor: pointer;
 }
@@ -150,52 +151,67 @@
   margin: 5dvh auto 0;
 }
 
-/* ----------- animation ---------------------  */
+/* ----------- Media Query ---------------------  */
 
-#login_signup {
-  transition: background 0.5s ease-in-out;
+@media screen and (max-width: 430px) {
+  #login_signup {
+    top: 10%;
+    left: 5%;
+    height: fit-content;
+    padding: 3dvh 0;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  #signUp > h1,
+  #login > h1 {
+    font-size: 2rem;
+  }
+
+  #signUp > div > div > label,
+  #login > div > div > label {
+    font-size: 1rem;
+  }
 }
 
-#login::before {
-  position: absolute;
-  top: 15dvh;
-  left: 3dvw;
-  content: "Welcome\n Back";
-  font-size: 3rem;
-  font-weight: bold;
-  color: white;
-  white-space: pre-line;
+@media screen and (min-width: 431px) and (max-width: 1024px) {
+  #login_signup {
+    top: 10%;
+    left: 20%;
+    height: fit-content;
+    padding: 3dvh 0;
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  #signUp > h1,
+  #login > h1 {
+    font-size: 2.5rem;
+  }
+
+  #signUp > div > div > label,
+  #login > div > div > label {
+    font-size: 1.1rem;
+  }
 }
 
-#login::after {
-  position: absolute;
-  top: 25dvh;
-  left: 3dvw;
-  content: "CARBUDDY  :)";
-  font-weight: bold;
-  color: white;
-  font-size: 2rem;
-  white-space: pre-line;
-}
+@media screen and (min-width: 1025px) {
+  #login_signup {
+    top: 10%;
+    left: 35%;
+    height: fit-content;
+    padding: 3dvh 0;
+    width: 30%;
+    margin: 0 auto;
+  }
 
-#signUp::before {
-  position: absolute;
-  top: 15dvh;
-  right: 3dvw;
-  content: "Welcome\n Back";
-  font-size: 3rem;
-  font-weight: bold;
-  color: white;
-  white-space: pre-line;
-}
+  #signUp > h1,
+  #login > h1 {
+    font-size: 3;
+  }
 
-#signUp::after {
-  position: absolute;
-  top: 25dvh;
-  right: 3dvw;
-  content: "(: CARBUDDY";
-  font-weight: bold;
-  color: white;
-  font-size: 2rem;
-  white-space: pre-line;
+  #signUp > div > div > label,
+  #login > div > div > label {
+    font-size: 1.2rem;
+  }
 }

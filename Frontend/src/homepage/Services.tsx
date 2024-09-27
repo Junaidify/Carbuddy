@@ -1,5 +1,3 @@
-import {} from "react";
-
 import serviceImg_1 from "../images/services_1.jpg";
 import serviceImg_2 from "../images/services_2.webp";
 import serviceImg_3 from "../images/services_3.webp";

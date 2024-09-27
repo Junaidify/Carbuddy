@@ -1,5 +1,3 @@
-import {} from "react";
-
 import "../styles/whychooseus.css";
 import booking from "../images/booking.png";
 import driver from "../images/driver.png";

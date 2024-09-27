@@ -4,6 +4,7 @@ export interface CarPropTypes {
   name: string;
   image: string;
   transmission: string;
+  brand: string;
   fuel: string;
   price: number;
   description: string;

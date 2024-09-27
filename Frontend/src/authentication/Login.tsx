@@ -12,7 +12,6 @@ const Login = () => {
   const [loginPasswordShown, setLoginPasswordShown] = useState<boolean>(false);
   const [signUpPasswordShown, setSignUpPasswordShown] =
     useState<boolean>(false);
-  const rotateDegree = login ? "10deg" : "205deg";
   const [loginPassword, setLoginPassword] = useState<LoginPropTypes>({
     user_email: "",
     user_password: "",
@@ -23,11 +22,6 @@ const Login = () => {
     phone: "",
     password: "",
   });
-
-  const gradientStyle = {
-    background: `conic-gradient(from ${rotateDegree} at 50% 0, var(--primary-color) 0%, var(--primary-color) 40%, white 40%, white 70%)`,
-    transition: "background 1s ease-in-out",
-  };
 
   const toggleSignUp = useCallback(
     async (e: React.FormEvent) => {
@@ -82,8 +76,8 @@ const Login = () => {
   return (
     <>
       <div id="login_signup_wrapper">
-        <div id="login_signup" style={gradientStyle}>
-          <div id="signUp" style={{ visibility: login ? "visible" : "hidden" }}>
+        <div id="login_signup" >
+          <div id="signUp" style={{ display : login ? "block" : "none"}}>
             <h1>Welcome User !</h1>
             <div>
               <div>
@@ -149,7 +143,7 @@ const Login = () => {
             </div>
           </div>
 
-          <div id="login" style={{ visibility: login ? "hidden" : "visible" }}>
+          <div id="login" style={{ display : login ? "none" : "block" }}>
             <h1>Welcome Back !</h1>
             <div>
               <div>
@@ -191,7 +185,6 @@ const Login = () => {
               </div>
             </div>
           </div>
-          <div id="image"></div>
         </div>
       </div>
     </>
