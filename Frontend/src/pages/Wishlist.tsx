@@ -4,7 +4,7 @@ import { useFetch } from "../hooks/useFetch";
 import { RootState } from "../utils/store";
 
 import "../styles/wishlist.css";
-import { faHeart, faTrash, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {faTrash, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback } from "react";
 import axios from "axios";
