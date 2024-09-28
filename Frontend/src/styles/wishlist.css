@@ -8,7 +8,7 @@
   text-align: center;
   color: var(--primary-color);
   font-size: 3rem;
-  margin-top: 5dvh;
+  margin: 5dvh 0;
 }
 
 #wishlist_container {
@@ -23,30 +23,13 @@
   box-shadow: 0 0 10px 0 var(--tertairy-color);
   border-radius: 10px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 1dvh;
 }
 
-.car > div {
-  width: 95%;
-  margin: auto;
-}
-
-.car > div:nth-child(2) {
-  margin-left: 2dvw;
-  font-weight: bold;
-  padding-bottom: 1dvh;
-}
-
-.car > div:nth-child(2) > p:nth-child(1) {
-  font-size: 1.7rem;
-  color: var(--primary-color);
-}
-
-.car > div:nth-child(2) > p:nth-child(2) {
-  font-size: 1.2rem;
-  color: var(--secondary-color);
-}
-
-.car > button {
+.car > .wishlist_btn {
   position: absolute;
   top: 1dvh;
   right: 1dvw;
@@ -61,4 +44,35 @@
   left: 45%;
   font-size: 5rem;
   color: var(--tertairy-color);
+}
+
+.paynow_btn {
+  border: none;
+  font-size: 1rem;
+  color: white;
+  background-color: var(--primary-color);
+  padding: 1dvh 1.5dvw;
+  width: 50%;
+  border-radius: 5px;
+  align-self: flex-start;
+}
+
+/* ----------- Media Query ------------- */
+
+@media screen and (max-width: 430px) {
+  #wishlist_container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media screen and (min-width: 431px) and (max-width: 1024px) {
+  #wishlist_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  #wishlist_container {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

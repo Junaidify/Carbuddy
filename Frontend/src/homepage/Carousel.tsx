@@ -7,10 +7,12 @@ import carousel_3 from "../images/carousel_3.jpg";
 import carousel_4 from "../images/carousel_4.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const Carousel = () => {
   const imgRef = useRef<HTMLDivElement>();
   const [currentItem, setCurrentItem] = useState<number>(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (imgRef) {
@@ -66,7 +68,7 @@ const Carousel = () => {
              Offering seamless booking, and flexible
             rental options, CarBuddy ensures a hassle-free experience.{" "}
           </p>
-          <button>Open Fleet</button>
+          <button onClick={() => navigate("/suv")}>Open Fleet</button>
         </div>
       </main>
     </>

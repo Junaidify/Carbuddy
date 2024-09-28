@@ -3,30 +3,41 @@ import { useFetch } from "../hooks/useFetch";
 import { useSelector } from "react-redux";
 import { CarPropTypes } from "../constant/interfaces";
 import logo from "../images/carousel_4.jpg";
-// import styling
 import "../styles/carcategorypage.css";
 import Footer from "../homepage/Footer";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../utils/store";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const RootComponentOfCars = ({ category }: { category: string }) => {
-  // called the fetch custom hook and pass the category
   useFetch("http://localhost:3000/cars", category);
   const navigate = useNavigate();
+  const [openFilters, setOpenFilters] = useState<boolean>(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  // get the data from the redux store
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (windowWidth >= 1025) {
+      setOpenFilters(true);
+    }
+  }, [windowWidth]);
+
   const { isLoading, isError, cars } = useSelector(
     (state: RootState) => state.cars
   );
 
-  // filter the data
   const [filteredData, setFilteredData] = useState<CarPropTypes[]>([]);
-  const [selectedFilters, setSelectedFilters] = useState<
-    Record<string, string[]>
-  >({
-    transmission: [],
-    fuel: [],
-    bookingAmount: [],
+  const [selectedFilters, setSelectedFilters] = useState({
+    fuel: [] as string[],
+    transmission: [] as string[],
+    brand: [] as string[],
+    bookingAmount: [] as [number, number][],
   });
 
   const handleChecked = (
@@ -38,9 +49,20 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
     const category = dataset.category as keyof typeof selectedFilters;
 
     setSelectedFilters((prevFilters) => {
-      const updatedCategory = checked
-        ? [...prevFilters[category], name]
-        : prevFilters[category].filter((item) => item !== name);
+      let updatedCategory = prevFilters[category];
+
+      if (category === "bookingAmount") {
+        const [min, max] = name.split("-").map(Number) as [number, number];
+        updatedCategory = checked
+          ? [...(prevFilters[category] as [number, number][]), [min, max]]
+          : (prevFilters[category] as [number, number][]).filter(
+              (range) => range[0] !== min && range[1] !== max
+            );
+      } else {
+        updatedCategory = checked
+          ? [...prevFilters[category], name]
+          : prevFilters[category].filter((item: string) => item !== name);
+      }
 
       return { ...prevFilters, [category]: updatedCategory };
     });
@@ -49,28 +71,30 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
   useEffect(() => {
     let filteredCars = [...cars];
 
-    if (selectedFilters.transmission.length > 0) {
-      filteredCars = filteredCars.filter((car: CarPropTypes) =>
-        selectedFilters.transmission.includes(car.transmission.toLowerCase())
-      );
-    }
-
     if (selectedFilters.fuel.length > 0) {
-      filteredCars = filteredCars.filter((car: CarPropTypes) =>
+      filteredCars = filteredCars.filter((car) =>
         selectedFilters.fuel.includes(car.fuel.toLowerCase())
       );
     }
 
     if (selectedFilters.bookingAmount.length > 0) {
-      filteredCars = filteredCars.filter((car: CarPropTypes) => {
-        return selectedFilters.bookingAmount.some((booking: string) => {
-          const [minAmount, maxAmount] = booking.split("-").map(Number);
+      filteredCars = filteredCars.filter((car) =>
+        selectedFilters.bookingAmount.some(
+          ([min, max]) => car.bookingAmount >= min && car.bookingAmount <= max
+        )
+      );
+    }
 
-          return (
-            car.bookingAmount >= minAmount && car.bookingAmount <= maxAmount
-          );
-        });
-      });
+    if (selectedFilters.brand.length > 0) {
+      filteredCars = filteredCars.filter((car) =>
+        selectedFilters.brand.includes(car.brand.toLowerCase())
+      );
+    }
+
+    if (selectedFilters.transmission.length > 0) {
+      filteredCars = filteredCars.filter((car) =>
+        selectedFilters.transmission.includes(car.transmission.toLowerCase())
+      );
     }
 
     setFilteredData(filteredCars);
@@ -86,8 +110,26 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
   return (
     <>
       <div id="car_category_container">
-        <div id="car_filter">
-          <h2>Filter By</h2>
+        <div
+          className="filter_box"
+          style={{ display: windowWidth < 1025 ? "block" : "none" }}
+        >
+          {openFilters ? (
+            <button onClick={() => setOpenFilters(false)} className="close">
+              <FontAwesomeIcon icon={faXmark} />
+            </button>
+          ) : (
+            <button onClick={() => setOpenFilters(true)}>
+              <FontAwesomeIcon icon={faBars} />
+            </button>
+          )}
+        </div>
+
+        <div
+          style={{ display: openFilters ? "block" : "none" }}
+          id="car_filter"
+        >
+          <h2> Filter By</h2>
           <div id="car_filter_content">
             <div className="car_filter_content_box">
               <h3>Fuel</h3>
@@ -145,7 +187,7 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
                   <input
                     type="checkbox"
                     name="toyota"
-                    data-category="bookingAmount"
+                    data-category="brand"
                     onChange={handleChecked}
                   />
                   <label htmlFor="toyota">Toyota</label>
@@ -154,7 +196,7 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
                   <input
                     type="checkbox"
                     name="bmw"
-                    data-category="bookingAmount"
+                    data-category="brand"
                     onChange={handleChecked}
                   />
                   <label htmlFor="bmw"> BMW</label>
@@ -163,7 +205,7 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
                   <input
                     type="checkbox"
                     name="nissan"
-                    data-category="bookingAmount"
+                    data-category="brand"
                     onChange={handleChecked}
                   />
                   <label htmlFor="nissan"> Nissan</label>
@@ -172,7 +214,7 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
                   <input
                     type="checkbox"
                     name="hyundai"
-                    data-category="bookingAmount"
+                    data-category="brand"
                     onChange={handleChecked}
                   />
                   <label htmlFor="hyundai"> Hyundai</label>
@@ -181,7 +223,7 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
                   <input
                     type="checkbox"
                     name="kia"
-                    data-category="bookingAmount"
+                    data-category="brand"
                     onChange={handleChecked}
                   />
                   <label htmlFor="kia"> Kia</label>
@@ -190,7 +232,7 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
                   <input
                     type="checkbox"
                     name="mercedes"
-                    data-category="bookingAmount"
+                    data-category="brand"
                     onChange={handleChecked}
                   />
                   <label htmlFor="mercedes"> Mercedes</label>
@@ -199,7 +241,7 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
                   <input
                     type="checkbox"
                     name="hyundai"
-                    data-category="bookingAmount"
+                    data-category="brand"
                     onChange={handleChecked}
                   />
                   <label htmlFor="hyundai"> Hyundai</label>
@@ -253,11 +295,9 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
               </div>
 
               <div className="car_category_content">
-              
                 <h3>{car.name}</h3>
                 <h2>
-                  <span>Starting from </span>
-                  ${car.bookingAmount}
+                  <span>Starting from </span>${car.bookingAmount}
                 </h2>
               </div>
 

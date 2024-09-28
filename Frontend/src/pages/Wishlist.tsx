@@ -4,7 +4,7 @@ import { useFetch } from "../hooks/useFetch";
 import { RootState } from "../utils/store";
 
 import "../styles/wishlist.css";
-import { faHeart, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faTrash, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback } from "react";
 import axios from "axios";
@@ -47,11 +47,7 @@ const Wishlist = () => {
       <div id="wishlist_container">
         {wishlist.length > 0 ? (
           wishlist.map((car) => (
-            <div
-              className="car"
-              key={car._id}
-              onClick={() => navigate(`/product/${car._id}`)}
-            >
+            <div className="car" key={car._id}>
               <div>
                 <img
                   style={{
@@ -63,19 +59,18 @@ const Wishlist = () => {
                   alt=""
                 />
               </div>
-              <div>
-                <p>{car.name}</p>
-                <p>
-                  ${car.bookingAmount} /{" "}
-                  <span style={{ fontSize: "1.2rem" }}> 12 hours</span>
-                </p>
-              </div>
-
               <button
                 className="wishlist_btn"
                 onClick={() => handleSaveLater(car._id)}
               >
-                <FontAwesomeIcon icon={faHeart} />
+                <FontAwesomeIcon icon={faTrash} />
+              </button>
+
+              <button
+                className="paynow_btn"
+                onClick={() => navigate(`/product/${car._id}`)}
+              >
+                Pay Now
               </button>
             </div>
           ))

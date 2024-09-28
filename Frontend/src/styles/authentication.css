@@ -31,10 +31,6 @@
   margin: 3dvh 0;
 }
 
-#signUp {
-  margin-top: 3dvh;
-}
-
 #signUp > div {
   display: flex;
   flex-direction: column;
@@ -139,9 +135,6 @@
 
 /* ----------- Login few details ---------------------  */
 
-#login {
-  margin-top: 5dvh;
-}
 
 #login > div {
   display: flex;

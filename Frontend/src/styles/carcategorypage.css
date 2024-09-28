@@ -63,13 +63,13 @@
 
 .single_car {
   width: 100%;
-  height: 40dvh;
+  height: 41dvh;
   display: flex;
   flex-direction: column;
   row-gap: 1dvh;
   background-color: whitesmoke;
-box-shadow: 0 0 10px 0 var(--secondary-color);
-border-radius: 5px;
+  box-shadow: 0 0 10px 0 var(--secondary-color);
+  border-radius: 5px;
 }
 
 .car_category_img {
@@ -95,6 +95,7 @@ border-radius: 5px;
 
 .car_category_content > h3 {
   color: var(--primary-color);
+  text-align: center;
 }
 
 .car_category_content > h2 > span {
@@ -106,7 +107,7 @@ border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.116);
   backdrop-filter: blur(5px);
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   column-gap: 1dvw;
   align-items: center;
   margin-left: 0.5dvw;
@@ -117,7 +118,7 @@ border-radius: 5px;
   color: var(--secondary-color);
   background-color: var(--primary-color);
   color: white;
-  padding: 0.5dvh 1dvw;
+  padding: 1dvh 5dvw;
   border: none;
   border-radius: 5px;
 }
@@ -126,51 +127,83 @@ border-radius: 5px;
 
 @media screen and (max-width: 430px) {
   #car_category_container {
-    width: 90%;
     grid-template-columns: repeat(1, 1fr);
-    grid-template-areas: "car_filter"
+    grid-template-areas:
+      "car_filter"
       "car_category";
-  }  
- 
+    position: relative;
+  }
+
+  .filter_box {
+    width: fit-content;
+    margin: 0 auto;
+    position: absolute;
+    top: 2dvh;
+    left: -5dvw;
+    background-color: transparent;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    z-index: 2;
+  }
+
+  .filter_box > button {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+  }
+
+  #car_filter {
+    width: fit-content;
+    margin: 2dvh auto 5dvh;
+    position: absolute;
+    background-color: white;
+    padding: 3dvh 5dvw;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    z-index: 1;
+  }
+
+  #car_filter > h2 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+  }
+
   #car_filter_content {
     display: flex;
     flex-direction: column;
     row-gap: 2dvh;
     margin-top: 3dvh;
   }
-  
+
   .car_filter_content_box {
     display: flex;
     flex-direction: column;
   }
-  
+
   .car_filter_content_box > h3 {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: bold;
     color: var(--primary-color);
   }
-  
+
   .car_filter_checkbox {
     display: flex;
     flex-direction: column;
     row-gap: 0.8dvh;
     margin-top: 1dvh;
   }
-  
+
   .car_filter_checkbox > div {
     display: flex;
     flex-direction: row;
-    column-gap: 0.5dvw;
-    align-items: center;
+    column-gap: 1dvw;
   }
 
-
-
-
-
-
-
-
+  .car_filter_checkbox > div > label {
+    font-size: 0.8rem;
+  }
 
   #car_category {
     width: 90%;
@@ -185,18 +218,18 @@ border-radius: 5px;
     flex-direction: column;
     justify-content: space-around;
     row-gap: 1dvh;
-    margin-left: 0.5dvw;
+    margin-left: 3dvw;
   }
 
   .car_category_content > h2 > span {
     font-size: 1rem;
   }
 
-  .car_category_content > h2{
+  .car_category_content > h2 {
     font-size: 1.2rem;
   }
 
-  .car_category_content > h3{
+  .car_category_content > h3 {
     font-size: 1.1rem;
   }
 
@@ -207,17 +240,87 @@ border-radius: 5px;
 
   .car_category_button > button {
     font-size: 0.8rem;
-    padding: 1dvh 2dvw;
   }
 }
 
-
 @media screen and (min-width: 431px) and (max-width: 1024px) {
   #car_category_container {
-    width: 90%;
     grid-template-columns: repeat(1, 1fr);
-    grid-template-areas: "car_filter"
+    grid-template-areas:
+      "car_filter"
       "car_category";
+    position: relative;
+  }
+
+  .filter_box {
+    width: fit-content;
+    margin: 0 auto;
+    position: absolute;
+    top: 2dvh;
+    left: -5dvw;
+    background-color: transparent;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    z-index: 2;
+  }
+
+  .filter_box > button {
+    font-size: 2rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+  }
+
+  #car_filter {
+    width: fit-content;
+    margin: 2dvh auto 5dvh;
+    position: absolute;
+    background-color: white;
+    padding: 3dvh 5dvw;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    z-index: 1;
+  }
+
+  #car_filter > h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+  }
+
+  #car_filter_content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2dvh;
+    margin-top: 3dvh;
+  }
+
+  .car_filter_content_box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .car_filter_content_box > h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+
+  .car_filter_checkbox {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.8dvh;
+    margin-top: 1dvh;
+  }
+
+  .car_filter_checkbox > div {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1dvw;
+  }
+
+  .car_filter_checkbox > div > label {
+    font-size: 1rem;
   }
 
   #car_category {
@@ -233,18 +336,18 @@ border-radius: 5px;
     flex-direction: column;
     justify-content: space-around;
     row-gap: 1dvh;
-    margin-left: 0.5dvw;
+    margin-left: 2dvw;
   }
 
   .car_category_content > h2 > span {
     font-size: 1rem;
   }
 
-  .car_category_content > h2{
+  .car_category_content > h2 {
     font-size: 1.2rem;
   }
 
-  .car_category_content > h3{
+  .car_category_content > h3 {
     font-size: 1.1rem;
   }
 
@@ -259,28 +362,28 @@ border-radius: 5px;
   }
 }
 
-@media screen and (min-width: 1025px)  {
+@media screen and (min-width: 1025px) {
+  #car_filter{
+    margin-top: 3dvh;
+  }
   .car_category_content {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     row-gap: 1dvh;
-    margin-left: 0.5dvw;
-
+    margin-left: 1dvw;
   }
 
   .car_category_content > h2 > span {
     font-size: 1.2rem;
   }
 
-  .car_category_content > h2{
+  .car_category_content > h2 {
     font-size: 1.4rem;
   }
 
-  .car_category_content > h3{
+  .car_category_content > h3 {
     font-size: 1.6rem;
-    text-align: center;
-
   }
 
   .car_category_button {
