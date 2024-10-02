@@ -8,7 +8,7 @@ export const useProduct = (id: string) => {
     useEffect(() => {
         const getFetch = async () => {
             try {
-                const res = await axios.get(`http://localhost:3000/cars/${id}`);
+                const res = await axios.get(`https://rent-wheels-1.onrender.com/cars/${id}`);
                 if (res.status === 200) {
                     setSaveCar(res.data);
                 } else {

@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const RootComponentOfCars = ({ category }: { category: string }) => {
-  useFetch("http://localhost:3000/cars", category);
+  useFetch("https://rent-wheels-1.onrender.com/cars", category);
   const navigate = useNavigate();
   const [openFilters, setOpenFilters] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

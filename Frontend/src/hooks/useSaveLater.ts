@@ -8,7 +8,7 @@ export const useSaveLater = () => {
     const handleSaveLater = useCallback(async (id: string) => {
         try {
             if (savelater[id]) {
-                const res = await axios.delete("http://localhost:3000/savelater", {
+                const res = await axios.delete("https://rent-wheels-1.onrender.com/savelater", {
                     data: { id }
                 });
 
@@ -18,7 +18,7 @@ export const useSaveLater = () => {
                 }
             }
             else {
-                const res = await axios.post("http://localhost:3000/savelater", { id });
+                const res = await axios.post("https://rent-wheels-1.onrender.com/savelater", { id });
                 if (res.status === 201) {
                     setSaveLater(prev => ({ ...prev, [id]: true }));
                 }

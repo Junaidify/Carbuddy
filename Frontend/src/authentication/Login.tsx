@@ -28,7 +28,7 @@ const Login = () => {
       e.preventDefault();
       try {
         const res = await axios.post(
-          "http://localhost:3000/register",
+          "https://rent-wheels-1.onrender.com/register",
           signUpPassword
         );
         if (res.status === 201) {
@@ -50,7 +50,7 @@ const Login = () => {
   const toggleLogin = useCallback(async () => {
     try {
       const res = await axios.post(
-        "http://localhost:3000/login",
+        "https://rent-wheels-1.onrender.com/login",
         loginPassword
       );
       if (res.status === 200) {

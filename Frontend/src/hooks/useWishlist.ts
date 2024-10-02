@@ -11,7 +11,7 @@ export const useWishlist = () => {
         const getWishlist = async () => {
             dispatch(setLoading());
             try {
-                const res = await axios.get('http://localhost:3000/savelater');
+                const res = await axios.get('https://rent-wheels-1.onrender.com/savelater');
                 if (res.status === 200) {
                     dispatch(setWishlist(res.data));
                 }

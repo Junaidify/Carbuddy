@@ -73,7 +73,7 @@ const Payment = () => {
         return alert("CVV cannot be empty");
 
       try {
-        const res = await axios.post("http://localhost:3000/payment", payment);
+        const res = await axios.post("https://rent-wheels-1.onrender.com/payment", payment);
         if (res.status === 201) {
           setRes(true);
           setPayment({

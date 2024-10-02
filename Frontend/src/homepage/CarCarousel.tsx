@@ -18,7 +18,7 @@ import { RootState } from "../utils/store";
 
 const CarsSection = () => {
   const [category, setCategory] = useState<string>("SUV");
-  useFetch("http://localhost:3000/cars", category);
+  useFetch("https://rent-wheels-1.onrender.com/cars", category);
 
   // Get the data from the Redux store
   const { isLoading, isError, cars } = useSelector(

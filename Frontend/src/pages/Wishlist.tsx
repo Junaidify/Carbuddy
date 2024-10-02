@@ -12,7 +12,7 @@ import { setWishlist } from "../reducers/wishlistReducer";
 import { useNavigate } from "react-router-dom";
 
 const Wishlist = () => {
-  useFetch("http://localhost:3000/cars", "");
+  useFetch("https://rent-wheels-1.onrender.com/cars", "");
   useWishlist();
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const Wishlist = () => {
   const handleSaveLater = useCallback(
     async (id: string): Promise<void> => {
       try {
-        const res = await axios.delete("http://localhost:3000/savelater", {
+        const res = await axios.delete("https://rent-wheels-1.onrender.com/savelater", {
           data: { id },
         });
         if (res.status === 200) {

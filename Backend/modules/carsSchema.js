@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
 
 mongoose
-  .connect("mongodb://localhost:27017/rentWheels")
+  .connect(
+     "mongodb+srv://junaidkhan23785:%25-YkRF%21.KLRsVr6@carbuddy.vasfi.mongodb.net/?retryWrites=true&w=majority&appName=carbuddy"
+  )
   .then(() => console.log("Mongodb Connected"))
   .catch((err) => console.log("MongoDB isn't connected " + err));
-
 
 const carSchema = new mongoose.Schema({
   name: {
