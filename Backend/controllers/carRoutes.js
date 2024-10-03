@@ -4,8 +4,6 @@ const bodyParser = require("body-parser");
 
 // router function
 const carRouter = express.Router();
-
-
 carRouter.use(bodyParser.urlencoded({ extended: true }));
 
 carRouter.get("/cars", async (req, res) => {

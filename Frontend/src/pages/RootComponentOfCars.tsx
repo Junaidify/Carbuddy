@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { RootState } from "../utils/store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import Skeleton from "./Skeleton";
 
 const RootComponentOfCars = ({ category }: { category: string }) => {
   useFetch("https://rent-wheels-1.onrender.com/cars", category);
@@ -106,6 +107,8 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error</div>;
+
+  console.log(filteredData);
 
   return (
     <>
@@ -284,33 +287,37 @@ const RootComponentOfCars = ({ category }: { category: string }) => {
           </div>
         </div>
         <div id="car_category">
-          {filteredData.map((car) => (
-            <div key={car._id} className="single_car">
-              <div className="car_category_img">
-                <img
-                  style={{ width: "100%", height: "100%" }}
-                  src={logo}
-                  alt=""
-                />
-              </div>
+          {filteredData.length !== 0 ? (
+            filteredData.map((car) => (
+              <div key={car._id} className="single_car">
+                <div className="car_category_img">
+                  <img
+                    style={{ width: "100%", height: "100%" }}
+                    src={logo}
+                    alt=""
+                  />
+                </div>
 
-              <div className="car_category_content">
-                <h3>{car.name}</h3>
-                <h2>
-                  <span>Starting from </span>${car.bookingAmount}
-                </h2>
-              </div>
+                <div className="car_category_content">
+                  <h3>{car.name}</h3>
+                  <h2>
+                    <span>Starting from </span>${car.bookingAmount}
+                  </h2>
+                </div>
 
-              <div className="car_category_button">
-                <button onClick={() => navigate(`/${category}/${car._id}`)}>
-                  Details
-                </button>
-                <button onClick={() => navigate(`/booking/${car._id}`)}>
-                  Book Now
-                </button>
+                <div className="car_category_button">
+                  <button onClick={() => navigate(`/${category}/${car._id}`)}>
+                    Details
+                  </button>
+                  <button onClick={() => navigate(`/booking/${car._id}`)}>
+                    Book Now
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <Skeleton />
+          )}
         </div>
       </div>
       <Footer />
